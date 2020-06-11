@@ -14,6 +14,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User login(User user) {
-		return repo.login(user);
+		return repo.select(user);
 	}
 }

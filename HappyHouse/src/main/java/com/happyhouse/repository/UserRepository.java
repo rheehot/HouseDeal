@@ -6,5 +6,5 @@ import com.happyhouse.domain.User;
 
 @Mapper
 public interface UserRepository {
-	User login(User user);
+	User select(User user);
 }

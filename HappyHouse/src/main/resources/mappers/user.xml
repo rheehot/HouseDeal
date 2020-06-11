@@ -4,7 +4,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- mappers/user.xml -->
-<mapper namespace="user"> <!-- mybatis는 namespace필수!! -->
+<mapper namespace="com.happyhouse.repository.UserRepository"> <!-- mybatis는 namespace필수!! -->
 
 	<!-- 로그인 -->
 	<select id="select" resultType="User">
