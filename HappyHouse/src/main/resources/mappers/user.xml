@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/gueset.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mappers/user.xml -->
+<mapper namespace="user"> <!-- mybatis는 namespace필수!! -->
+
+	<!-- 로그인 -->
+	<select id="select" resultType="User">
+		select id, name
+		from user
+		where id=#{id} and password=#{password}
+	</select>
+
+	<!-- 회원가입 -->
+	<!-- <insert id="join">
+		insert into user_info(id, password, name, address, phone)
+		values(#{id}, #{pw}, #{name}, #{address}, #{phone})
+	</insert> -->
+
+	<!-- 회원수정 -->
+	<!-- <update id="update">
+		update user_info
+		set address=#{address}, phone=#{phone}
+		where id=#{id}
+	</update> -->
+
+	<!-- 회원목록 -->
+	<!-- <select id="userlist" resultType="User">
+		select * from user_info
+	</select> -->
+
+	<!-- 회원상세 -->
+	<!-- <select id="userinfo" resultType="User">
+		select * from user_info
+		where id=#{id}
+	</select> -->
+
+	<!-- 검색 -->
+	<!-- <select id="searchlist" resultType="User">
+		select * from user_info
+		<if test="search != null">
+			<if test="type == 'id'">
+				where id like concat('%', #{search}, '%')
+			</if>
+			<if test="type == 'name'">
+				where name like concat('%', #{search}, '%')
+			</if>
+		</if>
+	</select> -->
+	
+	<!-- 삭제 -->
+	<!-- <select id="delete">
+		delete from user_info
+		where id = #{id}
+	</select> -->
+
+</mapper>
