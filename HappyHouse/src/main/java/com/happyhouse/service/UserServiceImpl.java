@@ -21,4 +21,9 @@ public class UserServiceImpl implements UserService {
 	public int signUp(User user) {
 		return repo.insert(user);
 	}
+
+	@Override
+	public User detail(User user) {
+		return repo.select(user);
+	}
 }

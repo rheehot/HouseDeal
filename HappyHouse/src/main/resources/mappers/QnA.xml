@@ -30,5 +30,42 @@
 		</if>
 		GROUP BY qnaNo;
 	</select>
-
+	
+	<insert id="insert">
+		insert into qna(qna_title, qna_content, qna_image, qna_user_no)
+		values(#{qnaTitle}, #{qnaContent}, #{qnaImage}, #{qnaUserNo})
+	</insert>
+	
+	<select id="select" resultType="QnA">
+		SELECT
+			qna_user_no as qnaUserNo,
+			qna_no as qnaNo,
+		    qna_title as qnaTitle,
+		    qna_content as qnaContent,
+		    qna_image as qnaImage,
+		    qna_datetime as qnaDatetime,
+		    name
+		FROM qna, user
+		WHERE qna.qna_no = #{no}
+		AND qna.qna_user_no = user.user_no;
+	</select>
+	
+	<select id="selectReply" resultType="QnA">
+		SELECT
+			reply_qna_user_no as replyQnaUserNo,
+			reply_no as replyNo,
+			reply_content as replyContent,
+		    reply_datetime as replyDatetime,
+			name, id
+		from qna, reply, user
+		where qna.qna_no = reply.reply_qna_no
+		and reply.reply_qna_user_no = user.user_no
+		and qna.qna_no = #{no};
+	</select>
+	
+	<update id="updateReply">
+		UPDATE reply
+		SET reply_content = #{replyContent}
+		WHERE reply_no = #{replyNo};
+	</update>
 </mapper>

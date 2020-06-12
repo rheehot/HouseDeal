@@ -15,7 +15,7 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link" href="about.html">공지사항</a></li>
-				<li class="nav-item"><a class="nav-link" href="services.html">QnA</a></li>
+				<li class="nav-item"><a class="nav-link" href="${root}/api/qna">QnA</a></li>
 				<c:if test="${ userinfo == null }">
 					<li class="nav-item"><a class="nav-link" href="${root}/user/loginpage">로그인</a></li>
 					<li class="nav-item"><a class="nav-link" href="${root}/user/joinpage">회원가입</a></li>
@@ -30,10 +30,10 @@
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
 							<!-- admin일 경우 회원 목록 보기 + 삭제 기능 추가 -->
 							<c:if test="${userinfo.getId() eq 'admin'}">
-								<a class="dropdown-item" href="${ root }/userlist">회원관리</a>
+								<a class="dropdown-item" href="${ root }/user/userlist">회원관리</a>
 							</c:if>
 							<a class="dropdown-item" href="">관심지역 변경</a>
-							<a class="dropdown-item" href="">회원정보 수정</a>
+							<a class="dropdown-item" href="${ root }/user/updatepage">회원정보 수정</a>
 							<a class="dropdown-item" href="logout">로그아웃</a>
 						</div>
 					</li>

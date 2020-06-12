@@ -9,15 +9,21 @@ public class QnA {
 	private String qnaImage;
 	private int qnaUserNo;
 	private Date qnaDatetime;
+	private String replyContent;
+	private Date replyDatetime;
+	private int replyNo;
+	private int replyQnaUserNo;
 	private int replyCnt;
 	private String name;
+	private String id;
 
 	public QnA() {
 
 	}
 
 	public QnA(int qnaNo, String qnaTitle, String qnaContent, String qnaImage, int qnaUserNo, Date qnaDatetime,
-			int replyCnt, String name) {
+			String replyContent, Date replyDatetime, int replyNo, int replyQnaUserNo, int replyCnt, String name,
+			String id) {
 		super();
 		this.qnaNo = qnaNo;
 		this.qnaTitle = qnaTitle;
@@ -25,8 +31,13 @@ public class QnA {
 		this.qnaImage = qnaImage;
 		this.qnaUserNo = qnaUserNo;
 		this.qnaDatetime = qnaDatetime;
+		this.replyContent = replyContent;
+		this.replyDatetime = replyDatetime;
+		this.replyNo = replyNo;
+		this.replyQnaUserNo = replyQnaUserNo;
 		this.replyCnt = replyCnt;
 		this.name = name;
+		this.id = id;
 	}
 
 	public int getQnaNo() {
@@ -77,6 +88,38 @@ public class QnA {
 		this.qnaDatetime = qnaDatetime;
 	}
 
+	public String getReplyContent() {
+		return replyContent;
+	}
+
+	public void setReplyContent(String replyContent) {
+		this.replyContent = replyContent;
+	}
+
+	public Date getReplyDatetime() {
+		return replyDatetime;
+	}
+
+	public void setReplyDatetime(Date replyDatetime) {
+		this.replyDatetime = replyDatetime;
+	}
+
+	public int getReplyNo() {
+		return replyNo;
+	}
+
+	public void setReplyNo(int replyNo) {
+		this.replyNo = replyNo;
+	}
+
+	public int getReplyQnaUserNo() {
+		return replyQnaUserNo;
+	}
+
+	public void setReplyQnaUserNo(int replyQnaUserNo) {
+		this.replyQnaUserNo = replyQnaUserNo;
+	}
+
 	public int getReplyCnt() {
 		return replyCnt;
 	}
@@ -93,11 +136,22 @@ public class QnA {
 		this.name = name;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "QnA [qnaNo=" + qnaNo + ", qnaTitle=" + qnaTitle + ", qnaContent=" + qnaContent + ", qnaImage="
-				+ qnaImage + ", qnaUserNo=" + qnaUserNo + ", qnaDatetime=" + qnaDatetime + ", replyCnt=" + replyCnt
-				+ ", name=" + name + "]";
+				+ qnaImage + ", qnaUserNo=" + qnaUserNo + ", qnaDatetime=" + qnaDatetime + ", replyContent="
+				+ replyContent + ", replyDatetime=" + replyDatetime + ", replyNo=" + replyNo + ", replyQnaUserNo="
+				+ replyQnaUserNo + ", replyCnt=" + replyCnt + ", name=" + name + ", id=" + id + "]";
 	}
+
+	
 
 }

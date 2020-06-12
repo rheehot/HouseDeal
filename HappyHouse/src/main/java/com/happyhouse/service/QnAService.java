@@ -2,6 +2,8 @@ package com.happyhouse.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.happyhouse.domain.QnA;
 
 public interface QnAService {
@@ -9,7 +11,9 @@ public interface QnAService {
 	
 	QnA findByQnANo(int no) throws Exception;
 	
-	int regitry(QnA qna) throws Exception;
+	List<QnA> selectReply(int no) throws Exception;
+	
+	int regitry(MultipartFile file, QnA qna) throws Exception;
 	
 	int modify(QnA qun) throws Exception;
 	

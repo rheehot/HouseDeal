@@ -11,9 +11,11 @@ public interface QnARepository {
 	
 	QnA select(int no) throws Exception;
 	
+	List<QnA> selectReply(int no) throws Exception;
+	
 	int insert(QnA qna) throws Exception;
 	
-	int update(QnA qun) throws Exception;
+	int update(QnA qna) throws Exception;
 	
 	int delete(int no) throws Exception;
 }

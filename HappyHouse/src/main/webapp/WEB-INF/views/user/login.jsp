@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <%@ include file="../setting.jsp"%>
 <link rel='stylesheet' type='text/css' href='${root}/css/login.css' /> <!-- css/login.css -->
 <title>Log In</title>
@@ -20,7 +19,7 @@
 			$('#myModal').modal('show');
 			return;
 		} else {
-			document.getElementById("loginform").action = "user/login";
+			document.getElementById("loginform").action = "${root}/user/login";
 			document.getElementById("loginform").submit();
 		}
 	}
