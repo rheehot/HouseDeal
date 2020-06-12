@@ -1,6 +1,7 @@
 package com.happyhouse.domain;
 
 public class Reply {
+	private int replyNo;
 	private int replyQnaNo;
 	private int replyQnaUserNo;
 	private String replyContent;
@@ -10,11 +11,20 @@ public class Reply {
 
 	}
 
-	public Reply(int replyQnaNo, int replyQnaUserNo, String replyContent, String replyDatetime) {
+	public Reply(int replyNo, int replyQnaNo, int replyQnaUserNo, String replyContent, String replyDatetime) {
+		this.replyNo = replyNo;
 		this.replyQnaNo = replyQnaNo;
 		this.replyQnaUserNo = replyQnaUserNo;
 		this.replyContent = replyContent;
 		this.replyDatetime = replyDatetime;
+	}
+
+	public int getReplyNo() {
+		return replyNo;
+	}
+
+	public void setReplyNo(int replyNo) {
+		this.replyNo = replyNo;
 	}
 
 	public int getReplyQnaNo() {
@@ -51,8 +61,8 @@ public class Reply {
 
 	@Override
 	public String toString() {
-		return "Reply [replyQnaNo=" + replyQnaNo + ", replyQnaUserNo=" + replyQnaUserNo + ", replyContent="
-				+ replyContent + ", replyDatetime=" + replyDatetime + "]";
+		return "Reply [replyNo=" + replyNo + ", replyQnaNo=" + replyQnaNo + ", replyQnaUserNo=" + replyQnaUserNo
+				+ ", replyContent=" + replyContent + ", replyDatetime=" + replyDatetime + "]";
 	}
 
 }

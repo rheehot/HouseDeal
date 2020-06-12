@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.happyhouse.repository.QnARepository"> <!-- mybatis는 namespace필수!! -->
+
+	<!-- QnA 리스트 정보 가져오기 -->
+<!-- 	<select id="selectAll" resultType="QnA">
+		SELECT
+			qna_no as qnaNo,
+		    qna_title as qnaTitle,
+		    qna_content as qnaContent,
+		    qna_image as qnaImage,
+		    count(reply_qna_no) as replyCnt,
+		    name
+		FROM qna, reply, user
+		where 1=1
+		and qna.qna_no = reply.reply_qna_no
+		and qna.qna_user_no = user.user_no
+		group by reply_qna_no;
+	</select> -->
+
+	<select id="selectAll" resultType="QnA">
+		SELECT
+			qna_no as qnaNo,
+		    qna_title as qnaTitle,
+		    qna_content as qnaContent,
+		    qna_image as qnaImage,
+		FROM qna, reply, user
+	</select>
+</mapper>
