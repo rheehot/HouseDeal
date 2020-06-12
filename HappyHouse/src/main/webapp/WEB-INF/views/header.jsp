@@ -20,7 +20,7 @@
 					<li class="nav-item"><a class="nav-link" href="loginpage">로그인</a></li>
 					<li class="nav-item"><a class="nav-link" href="joinpage">회원가입</a></li>
 				</c:if>
-				<%-- <c:if test="${ userinfo != null }"> --%>
+				<c:if test="${ userinfo != null }">
 					<li class="nav-item"><a class="nav-link" href="contact.html">HouseInfo</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact.html">대기환경 정보</a></li>
 					<li class="nav-item dropdown">
@@ -29,63 +29,16 @@
 						<strong>${ userinfo.getName() } (${ userinfo.getId() })</strong>님 환영합니다.</a>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
 							<!-- admin일 경우 회원 목록 보기 + 삭제 기능 추가 -->
-							<%-- <c:if test="${userinfo.getId() eq 'admin'}">  --%>
+							<c:if test="${userinfo.getId() eq 'admin'}">
 								<a class="dropdown-item" href="${ root }/userlist">회원관리</a>
-							<%-- </c:if> --%>
+							</c:if>
 							<a class="dropdown-item" href="">관심지역 변경</a>
 							<a class="dropdown-item" href="">회원정보 수정</a>
-							<a class="dropdown-item" href="">로그아웃</a>
+							<a class="dropdown-item" href="logout">로그아웃</a>
 						</div>
 					</li>
-				<%-- </c:if> --%>
+				</c:if>
 			</ul>
 		</div>
 	</div>
 </nav>
-
-<header>
-	<div id="carouselExampleIndicators" class="carousel slide"
-		data-ride="carousel">
-		<ol class="carousel-indicators">
-			<li data-target="#carouselExampleIndicators" data-slide-to="0"
-				class="active"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-		</ol>
-		<div class="carousel-inner" role="listbox">
-			<!-- Slide One - Set the background image for this slide in the line below -->
-			<div class="carousel-item active"
-				style="background-image: url('http://placehold.it/1900x1080')">
-				<div class="carousel-caption d-none d-md-block">
-					<h3>First Slide</h3>
-					<p>This is a description for the first slide.</p>
-				</div>
-			</div>
-			<!-- Slide Two - Set the background image for this slide in the line below -->
-			<div class="carousel-item"
-				style="background-image: url('http://placehold.it/1900x1080')">
-				<div class="carousel-caption d-none d-md-block">
-					<h3>Second Slide</h3>
-					<p>This is a description for the second slide.</p>
-				</div>
-			</div>
-			<!-- Slide Three - Set the background image for this slide in the line below -->
-			<div class="carousel-item"
-				style="background-image: url('http://placehold.it/1900x1080')">
-				<div class="carousel-caption d-none d-md-block">
-					<h3>Third Slide</h3>
-					<p>This is a description for the third slide.</p>
-				</div>
-			</div>
-		</div>
-		<a class="carousel-control-prev" href="#carouselExampleIndicators"
-			role="button" data-slide="prev"> <span
-			class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-			class="sr-only">Previous</span>
-		</a> <a class="carousel-control-next" href="#carouselExampleIndicators"
-			role="button" data-slide="next"> <span
-			class="carousel-control-next-icon" aria-hidden="true"></span> <span
-			class="sr-only">Next</span>
-		</a>
-	</div>
-</header>

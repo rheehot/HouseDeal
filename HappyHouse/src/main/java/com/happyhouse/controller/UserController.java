@@ -22,6 +22,7 @@ public class UserController {
 
 	@RequestMapping("login")
 	public String login(User input, HttpSession session, Model model) {
+		System.out.println(input);
 		User user = service.login(input);
 		if (user != null) {
 			session.setAttribute("userinfo", user);

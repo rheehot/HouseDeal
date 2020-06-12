@@ -2,56 +2,75 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${ pageContext.request.contextPath }" />
-
-<%@ include file="../header.jsp"%>
-
-<div class="container">
-	<c:if test="${ userinfo != null }">
-		<div class="username_div">
-			<p style="font-size: large;">
-				<strong>${ userinfo.getName() } (${ userinfo.getId() })</strong>님 환영합니다.
-				<button type="button" class="btn btn-info" onclick="logout()">로그아웃</button>
-			</p>
-		</div>
-	</c:if>
-	<div class="starter-template">
-		<h1>로그인 페이지 입니다.</h1>
-		<form id="loginform" method="post" action="">
-		<input type="hidden" name="act" value="login">
-			
-			<div class="form-group" align="left">
-				<label for="">아이디</label>
-				<input type="text" class="form-control" id="userid" name="id" placeholder="" value="">
-			</div>
-			
-			<div class="form-group" align="left">
-				<label for="">비밀번호</label>
-				<input type="password" class="form-control" id="userpwd" name="pw" placeholder="" onkeydown="javascript:if(event.keyCode == 13) {login();}">
-			</div>
-			
-			<div class="form-group" align="center">
-				<button type="button" class="btn btn-warning" onclick="javascript:login();">로그인</button>
-				<button type="button" class="btn btn-primary" onclick="javascript:moveJoin();">회원가입</button>
-			</div>
-		</form>
-	</div>
-</div>
-
-<%@ include file="../footer.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<%@ include file="../setting.jsp"%>
+<link rel='stylesheet' type='text/css' href='css/login.css' />
+<title>Log In</title>
 <script type="text/javascript">
-function login() {
-	if(document.getElementById("userid").value == "") {
-		alert("아이디 입력!!!");
-		return;
-	} else if(document.getElementById("userpwd").value == "") {
-		alert("비밀번호 입력!!!");
-		return;
-	} else {
-		document.getElementById("loginform").action = "login";
-		document.getElementById("loginform").submit();
+	function login() {
+		if (document.getElementById("userid").value == "") {
+			$('#modaltext').text('아이디를 입력해 주세요.');
+			$('#myModal').modal('show');
+			return;
+		} else if (document.getElementById("userpwd").value == "") {
+			$('#modaltext').text('비밀번호를 입력해 주세요.');
+			$('#myModal').modal('show');
+			return;
+		} else {
+			document.getElementById("loginform").action = "login";
+			document.getElementById("loginform").submit();
+		}
 	}
-}
-function moveJoin() {
-	document.location.href = "${ root }/joinpage";
-}	
+	function moveJoin() {
+		document.location.href = "${ root }/joinpage";
+	}
 </script>
+</head>
+<body>
+	<%@ include file="../header.jsp"%>
+	
+	<div class="container">
+		<div class="login-box">
+			<h2>LogIn</h2>
+			<form id="loginform" method="post" action="">
+				<input type="hidden" name="act" value="login">
+				<div class="user-box">
+					<input type="text" id="userid" name="id" required=""> <label>Username</label>
+				</div>
+				<div class="user-box">
+					<input type="password" id="userpwd" name="password" required="" onkeydown="javascript:if(event.keyCode == 13) {login();}"> <label>Password</label>
+				</div>
+				<a href="#" onclick="javascript:login();"> <span></span> <span></span> <span></span> <span></span>
+					LogIn
+				</a>
+				<a href="#" onclick="javascript:moveJoin();"> <span></span> <span></span> <span></span> <span></span>
+					SignUp
+				</a>
+			</form>
+		</div>
+	</div>
+
+	<div id="myModal" class="modal fade" role="dialog" style="display: none">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Fail To LogIn</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p id="modaltext">Some text in the modal.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<%@ include file="../footer.jsp"%>
+</body>
+</html>
