@@ -14,10 +14,10 @@
 	</select>
 
 	<!-- 회원가입 -->
-	<!-- <insert id="join">
-		insert into user_info(id, password, name, address, phone)
-		values(#{id}, #{pw}, #{name}, #{address}, #{phone})
-	</insert> -->
+	<insert id="insert">
+		insert into user(id, password, name, tel, address)
+		values(#{id}, #{password}, #{name}, #{tel}, #{address})
+	</insert>
 
 	<!-- 회원수정 -->
 	<!-- <update id="update">
