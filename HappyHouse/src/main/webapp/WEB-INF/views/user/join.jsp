@@ -5,9 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <%@ include file="../setting.jsp"%>
-<link rel='stylesheet' type='text/css' href='css/join.css' />
+<link rel='stylesheet' type='text/css' href='${root}/css/join.css' />
 <title>Sign Up</title>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -26,10 +25,10 @@
 		if($.trim($('#userid').val()) == '') {
 			alert('ID 입력하세요.');
 			return;
-		} else if($.trim($('#userpwd').val()) == '') {
+		} else if($('#userpwd').val() == '') {
 			alert('PW 입력하세요.');
 			return;
-		} else if($.trim($('#userver').val()) == '') {
+		} else if($('#userver').val() == '') {
 			alert('PW를 한번 더 입력하세요.');
 			return;
 		} else if($.trim($('#username').val()) == '') {
@@ -43,11 +42,9 @@
 			return;
 		}
 		
-		//$('#loginform').attr('onsubmit', 'event.preventDefault();');
-		console.log('등록시도');
 		$.ajax({
 			method : 'POST',
-			url : 'join',
+			url : '${root}/user/join',
 			data: {
 				id : $('#userid').val(),
 				password : $('#userpwd').val(),
@@ -70,7 +67,7 @@
 	<%@ include file="../header.jsp"%>
 	<div class="container" style="height: 400px;">
 		<div class="login-box">
-			<h2>LogIn</h2>
+			<h2>Sign Up</h2>
 			<form id="loginform" method="post" action="">
 				<input type="hidden" name="act" value="login">
 				<div class="user-box">

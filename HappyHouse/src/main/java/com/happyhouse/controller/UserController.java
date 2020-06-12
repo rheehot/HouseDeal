@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -58,5 +59,21 @@ public class UserController {
 //			return "error/error";
 //		}
 	}
+	
+	@RequestMapping("updatepage")
+	public String updatePage(HttpSession session, Model model) {
+		User user = (User) session.getAttribute("userinfo");
+		System.out.println("정보 >> " + user);
+		
+		model.addAttribute("user", user);
+		return "user/update";
+	}
+	
+	@PostMapping("update")
+	public @ResponseBody String update(User user) {
+		System.out.println(user);
+		return "";
+	}
+	
 
 }
