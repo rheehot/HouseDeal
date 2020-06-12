@@ -34,7 +34,7 @@
 							</c:if>
 							<a class="dropdown-item" href="">관심지역 변경</a>
 							<a class="dropdown-item" href="${ root }/user/updatepage">회원정보 수정</a>
-							<a class="dropdown-item" href="logout">로그아웃</a>
+							<a class="dropdown-item" href="${ root }/user/logout">로그아웃</a>
 						</div>
 					</li>
 				</c:if>

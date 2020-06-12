@@ -23,22 +23,30 @@
 <script>
 	function signup() {
 		if($.trim($('#userid').val()) == '') {
-			alert('ID 입력하세요.');
+			$('#modaltext').text('아이디를 입력해 주세요.');
+			$('#modaltitle').text('Fail To SignUp');
+			$('#myModal').modal('show');
+			//$('#userid').focus();
 			return;
 		} else if($('#userpwd').val() == '') {
-			alert('PW 입력하세요.');
+			$('#modaltext').text('비밀번호를 입력해 주세요.');
+			$('#modaltitle').text('Fail To SignUp');
+			$('#myModal').modal('show');
 			return;
-		} else if($('#userver').val() == '') {
-			alert('PW를 한번 더 입력하세요.');
+		} else if($('#userpwdver').val() == '') {
+			$('#modaltext').text('비밀번호를 입력해 주세요.');
+			$('#modaltitle').text('Fail To SignUp');
+			$('#myModal').modal('show');
 			return;
 		} else if($.trim($('#username').val()) == '') {
-			alert('Name 입력하세요.');
+			$('#modaltext').text('이름을 입력해 주세요.');
+			$('#modaltitle').text('Fail To SignUp');
+			$('#myModal').modal('show');
 			return;
-		} else if($.trim($('#usertel').val()) == '') {
-			alert('Tel 입력하세요.');
-			return;
-		} else if($.trim($('#useraddr').val()) == '') {
-			alert('Address 입력하세요.');
+		} else if($('#userpwd').val() != $('#userpwdver').val()) {
+			$('#modaltext').text('동일한 비밀번호를 입력해 주세요.');
+			$('#modaltitle').text('Fail To SignUp');
+			$('#myModal').modal('show');
 			return;
 		}
 		
@@ -94,6 +102,8 @@
 			</form>
 		</div>
 	</div>
+	
+	<%@ include file="../modal.jsp"%>
 	<%@ include file="../footer.jsp"%>
 </body>
 </html>
