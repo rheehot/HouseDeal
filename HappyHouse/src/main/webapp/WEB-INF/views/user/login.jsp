@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <%@ include file="../setting.jsp"%>
-<link rel='stylesheet' type='text/css' href='css/login.css' />
+<link rel='stylesheet' type='text/css' href='${root}/css/login.css' /> <!-- css/login.css -->
 <title>Log In</title>
 <script type="text/javascript">
 	function login() {
@@ -20,17 +20,17 @@
 			$('#myModal').modal('show');
 			return;
 		} else {
-			document.getElementById("loginform").action = "login";
+			document.getElementById("loginform").action = "user/login";
 			document.getElementById("loginform").submit();
 		}
 	}
 	function moveJoin() {
-		document.location.href = "${ root }/joinpage";
+		document.location.href = "${ root }/user/joinpage";
 	}
 </script>
 </head>
 <body>
-	<%@ include file="../header.jsp"%>
+	<%@ include file="/WEB-INF/views/header.jsp"%>
 	
 	<div class="container">
 		<div class="login-box">
@@ -38,7 +38,7 @@
 			<form id="loginform" method="post" action="">
 				<input type="hidden" name="act" value="login">
 				<div class="user-box">
-					<input type="text" id="userid" name="id" required=""> <label>Username</label>
+					<input type="text" id="userid" name="id" required=""> <label>ID</label>
 				</div>
 				<div class="user-box">
 					<input type="password" id="userpwd" name="password" required="" onkeydown="javascript:if(event.keyCode == 13) {login();}"> <label>Password</label>

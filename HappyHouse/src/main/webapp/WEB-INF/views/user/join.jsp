@@ -5,81 +5,98 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <%@ include file="../setting.jsp"%>
 <link rel='stylesheet' type='text/css' href='css/join.css' />
-<title>Insert title here</title>
-<script type="text/javascript">
-$(document).ready(function() {
-	$("#registerBtn").click(function() {
-		if($("#username").val() == "") {
-			alert("이름 입력!!!");
+<title>Sign Up</title>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#useraddr").click(function(){//daum address
+		    new daum.Postcode({
+		        oncomplete: function(data) {
+	 	        	$("#useraddr").val(data.address);
+		        }//oncomplete
+		    }).open();
+		});//click
+	});//ready
+</script>
+<script>
+	function signup() {
+		if($.trim($('#userid').val()) == '') {
+			alert('ID 입력하세요.');
 			return;
-		} else if($("#userid").val() == "") {
-			alert("아이디 입력!!!");
+		} else if($.trim($('#userpwd').val()) == '') {
+			alert('PW 입력하세요.');
 			return;
-		} else if($("#userpwd").val() == "") {
-			alert("비밀번호 입력!!!");
+		} else if($.trim($('#userver').val()) == '') {
+			alert('PW를 한번 더 입력하세요.');
 			return;
-		} else if($("#userpwd").val() != $("#pwdcheck").val()) {
-			alert("비밀번호 확인!!!");
+		} else if($.trim($('#username').val()) == '') {
+			alert('Name 입력하세요.');
 			return;
-		} else {
-			$("#memberform").attr("action", "join").submit();
+		} else if($.trim($('#usertel').val()) == '') {
+			alert('Tel 입력하세요.');
+			return;
+		} else if($.trim($('#useraddr').val()) == '') {
+			alert('Address 입력하세요.');
+			return;
 		}
-	});
-});
-
-
+		
+		//$('#loginform').attr('onsubmit', 'event.preventDefault();');
+		console.log('등록시도');
+		$.ajax({
+			method : 'POST',
+			url : 'join',
+			data: {
+				id : $('#userid').val(),
+				password : $('#userpwd').val(),
+				name : $('#username').val(),
+				tel : $('#usertel').val(),
+				address : $('#useraddr').val(),
+			},
+			success : function(data) {
+				alert('등록완료');
+				location.href = '${root}';
+			}
+		})
+	}
+	
+	$(document).ready(function() {
+	})
 </script>
 </head>
-<body ng-controller="RegisterCtrl" ng-app="myApp">
+<body>
 	<%@ include file="../header.jsp"%>
-	
-	<%-- <div class="container">
-		<c:if test="${ userinfo != null }">
-			<div class="username_div">
-				<p style="font-size: large;">
-					<strong>${ userinfo.getName() } (${ userinfo.getId() })</strong>님 환영합니다.
-					<button type="button" class="btn btn-info" onclick="logout()">로그아웃</button>
-				</p>
-			</div>
-		</c:if>
-		<div class="starter-template">
-			<h1>회원가입 페이지 입니다.</h1>
-			<form id="memberform" method="post" action="">
-			<input type="hidden" name="act" id="act" value="join">
-				<div class="form-group" align="left">
-					<label for="">아이디</label>
-					<input type="text" class="form-control" id="userid" name="id" placeholder="">
+	<div class="container" style="height: 400px;">
+		<div class="login-box">
+			<h2>LogIn</h2>
+			<form id="loginform" method="post" action="">
+				<input type="hidden" name="act" value="login">
+				<div class="user-box">
+					<input type="text" id="userid" name="id" required=""> <label>ID</label>
 				</div>
-				<div class="form-group" align="left">
-					<label for="">비밀번호</label>
-					<input type="password" class="form-control" id="userpwd" name="pw" placeholder="">
+				<div class="user-box">
+					<input type="password" id="userpwd" name="password" required=""> <label>Password</label>
 				</div>
-				<div class="form-group" align="left">
-					<label for="">비밀번호재입력</label>
-					<input type="password" class="form-control" id="pwdcheck" name="pwcheck" placeholder="">
+				<div class="user-box">
+					<input type="password" id="userpwdver" name="password" required=""> <label>Password Verification</label>
 				</div>
-				<div class="form-group" align="left">
-					<label for="name">이름</label>
-					<input type="text" class="form-control" id="username" name="name" placeholder="">
+				<div class="user-box">
+					<input type="text" id="username" name="name" required=""> <label>Name</label>
 				</div>
-				<div class="form-group" align="left">
-					<label for="">주소</label><br>
-					<input type="text" class="form-control" id="address" name="address" placeholder="">
+				<div class="user-box">
+					<input type="text" id="usertel" name="tel" required=""> <label>Tel</label>
 				</div>
-				<div class="form-group" align="left">
-					<label for="tel">전화번호</label>
-					<input type="text" class="form-control" id="phone" name="phone" placeholder="">
+				<div class="user-box">
+					<input type="text" id="useraddr" name="address" required=""> <label>Address</label>
 				</div>
-				<div class="form-group" align="center">
-					<button type="button" class="btn btn-primary" id="registerBtn">회원가입</button>
-					<button type="reset" class="btn btn-warning">초기화</button>
-				</div>
+				<a href="#" onclick="javascript:signup();"> <span></span> <span></span> <span></span> <span></span>
+					SignUp
+				</a>
 			</form>
 		</div>
-	</div> --%>
-
+	</div>
 	<%@ include file="../footer.jsp"%>
 </body>
 </html>

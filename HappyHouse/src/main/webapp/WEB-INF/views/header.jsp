@@ -17,8 +17,8 @@
 				<li class="nav-item"><a class="nav-link" href="about.html">공지사항</a></li>
 				<li class="nav-item"><a class="nav-link" href="services.html">QnA</a></li>
 				<c:if test="${ userinfo == null }">
-					<li class="nav-item"><a class="nav-link" href="loginpage">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="joinpage">회원가입</a></li>
+					<li class="nav-item"><a class="nav-link" href="${root}/user/loginpage">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" href="${root}/user/joinpage">회원가입</a></li>
 				</c:if>
 				<c:if test="${ userinfo != null }">
 					<li class="nav-item"><a class="nav-link" href="contact.html">HouseInfo</a></li>
