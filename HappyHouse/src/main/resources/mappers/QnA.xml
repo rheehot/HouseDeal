@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/gueset.xml -->
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mappers/user.xml -->
 <mapper namespace="com.happyhouse.repository.QnARepository"> <!-- mybatis는 namespace필수!! -->
 
-	<!-- QnA 리스트 정보 가져오기 -->
-<!-- 	<select id="selectAll" resultType="QnA">
+	<!-- QnA 리스트 정보 가져오기  -->
+	<select id="selectAll" resultType="QnA" parameterType="hashmap">
 		SELECT
 			qna_no as qnaNo,
-		    qna_title as qnaTitle,
-		    qna_content as qnaContent,
-		    qna_image as qnaImage,
-		    count(reply_qna_no) as replyCnt,
-		    name
-		FROM qna, reply, user
-		where 1=1
-		and qna.qna_no = reply.reply_qna_no
-		and qna.qna_user_no = user.user_no
-		group by reply_qna_no;
-	</select> -->
-
-	<select id="selectAll" resultType="QnA">
-		SELECT
-			qna_no as qnaNo,
-		    qna_title as qnaTitle,
-		    qna_content as qnaContent,
-		    qna_image as qnaImage,
-		FROM qna, reply, user
+			qna_title as qnaTitle,
+			qna_content as qnaContent,
+			qna_image as qnaImage,
+		    qna_datetime as qnaDatetime,
+			count(qna_no) as replyCnt,
+			user.name
+		FROM qna
+		LEFT JOIN reply ON qna.qna_no = reply.reply_qna_no
+		INNER JOIN user ON qna.qna_user_no = user.user_no
+		WHERE 1=1
+		<if test="key != 'all'">
+			<if test="key == 'title'">
+				and qna_title like concat('%', #{word},'%')
+			</if>
+			<if test="key == 'content'">
+				and qna_content like concat('%', #{word},'%')
+			</if>
+		</if>
+		GROUP BY qnaNo;
 	</select>
+
 </mapper>

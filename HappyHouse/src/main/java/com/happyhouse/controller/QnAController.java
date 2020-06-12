@@ -22,7 +22,6 @@ public class QnAController {
 
 	@GetMapping("/qna")
 	public ModelAndView getQnAs(HttpServletRequest request) {
-		System.out.println("test");
 		ModelAndView mav = new ModelAndView();
 		List<QnA> list  = null;
 		try {
@@ -36,6 +35,7 @@ public class QnAController {
 				System.out.println(qna);
 			}
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			mav.setViewName("index");
 		}
 		return mav;

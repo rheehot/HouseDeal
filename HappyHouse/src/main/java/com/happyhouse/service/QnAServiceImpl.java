@@ -18,11 +18,9 @@ public class QnAServiceImpl implements QnAService{
 	@Override
 	public List<QnA> findAll(String key, String word) throws Exception {
 		HashMap<String, String> map = new HashMap<>();
-		map.put("key", "all");
+		map.put("key", key);
 		map.put("word", word);
-		List<QnA> list =repository.selectAll(map);
-		System.out.println(list.size());
-		return list;
+		return repository.selectAll(map);
 	}
 
 	@Override
