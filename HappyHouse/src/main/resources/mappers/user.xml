@@ -14,10 +14,11 @@
 	</select>
 	
 	<!-- 회원상세 -->
-	<!-- <select id="userinfo" resultType="User">
-		select * from user_info
+	<select id="selectUser" resultType="User">
+		select user_no as userNo, id, password, name, tel, address
+		from user
 		where id=#{id}
-	</select> -->
+	</select>
 
 	<!-- 회원가입 -->
 	<insert id="insert">
@@ -25,35 +26,36 @@
 		values(#{id}, #{password}, #{name}, #{tel}, #{address})
 	</insert>
 
-	<!-- 회원수정 -->
-	<!-- <update id="update">
-		update user_info
-		set address=#{address}, phone=#{phone}
+	<!-- 회원정보 수정 -->
+	<update id="update">
+		update user
+		set password=#{password}, name=#{name}, tel=#{tel}, address=#{address}
 		where id=#{id}
-	</update> -->
+	</update>
 
 	<!-- 회원목록 -->
-	<!-- <select id="userlist" resultType="User">
-		select * from user_info
-	</select> -->
-
-	<!-- 검색 -->
-	<!-- <select id="searchlist" resultType="User">
-		select * from user_info
-		<if test="search != null">
-			<if test="type == 'id'">
-				where id like concat('%', #{search}, '%')
-			</if>
-			<if test="type == 'name'">
-				where name like concat('%', #{search}, '%')
-			</if>
-		</if>
-	</select> -->
+	<select id="userList" resultType="User">
+		select user_no as userNo, id, password, name, tel, address
+		from user
+	</select>
 	
 	<!-- 삭제 -->
-	<!-- <select id="delete">
-		delete from user_info
-		where id = #{id}
-	</select> -->
+	<select id="delete">
+		delete from user
+		where user_no = #{no}
+	</select>
 
+	<!-- 검색 -->
+	<select id="searchList" resultType="User">
+		select user_no as userNo, id, password, name, tel, address
+		from user
+		<if test="value != null">
+			<if test="type == 'id'">
+				where id like concat('%', #{value}, '%')
+			</if>
+			<if test="type == 'name'">
+				where name like concat('%', #{value}, '%')
+			</if>
+		</if>
+	</select>
 </mapper>

@@ -8,6 +8,18 @@
 <%@ include file="../setting.jsp"%>
 <link rel='stylesheet' type='text/css' href='${root}/css/join.css' />
 <title>Modify</title>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+$(document).ready(function(){
+	$("#useraddr").click(function(){//daum address
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+ 	        	$("#useraddr").val(data.address);
+	        }//oncomplete
+	    }).open();
+	});//click
+});//ready
+</script>
 <script>	
 	function idcheck() {
 		if('${user.id}' != $('#userid').val()) {
@@ -18,15 +30,50 @@
 	}
 	
 	function update() {
+		if($.trim($('#userid').val()) == '') {
+			$('#modaltext').text('아이디를 입력해 주세요.');
+			$('#modaltitle').text('Fail To Update');
+			$('#myModal').modal('show');
+			//$('#userid').focus();
+			return;
+		} else if($('#userpwd').val() == '') {
+			$('#modaltext').text('비밀번호를 입력해 주세요.');
+			$('#modaltitle').text('Fail To Update');
+			$('#myModal').modal('show');
+			return;
+		} else if($('#userpwdver').val() == '') {
+			$('#modaltext').text('비밀번호를 입력해 주세요.');
+			$('#modaltitle').text('Fail To Update');
+			$('#myModal').modal('show');
+			return;
+		} else if($.trim($('#username').val()) == '') {
+			$('#modaltext').text('이름을 입력해 주세요.');
+			$('#myModal').modal('show');
+			return;
+		} else if($('#userpwd').val() != $('#userpwdver').val()) {
+			$('#modaltext').text('동일한 비밀번호를 입력해 주세요.');
+			$('#modaltitle').text('Fail To SignUp');
+			$('#myModal').modal('show');
+			return;
+		}
+		
 		$.ajax({
 			method: 'POST',
 			url: '${root}/user/update',
-			date : {
+			data : {
 				id : $('#userid').val(),
 				password : $('#userpwd').val(),
 				name : $('#username').val(),
 				tel : $('#usertel').val(),
-				address : $('#useraddr').val(),
+				address : $('#useraddr').val()
+			},
+			success: function(data) {
+				$('#modaltext').text('수정이 완료되었습니다.');
+				$('#modaltitle').text('Success To SignUp');
+				$('#myModal').modal('show');
+				$('#modalok').click(function() {
+					location.href = '${root}';
+				});
 			}
 		});
 	}
@@ -64,6 +111,7 @@
 		</div>
 	</div>
 	
+	<%@ include file="../modal.jsp"%>
 	<%@ include file="../footer.jsp"%>
 </body>
 </html>
