@@ -6,10 +6,12 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,6 +36,13 @@ public class QnAController {
 			String key = request.getParameter("key");
 			String word = request.getParameter("word");
 			list = service.findAll(key, word);
+			for(QnA qna : list) {
+				QnA getQnA = null;
+				if((getQnA = service.getReplyCount(qna.getQnaNo())) != null) 
+					qna.setReplyCnt(getQnA.getReplyCnt());
+				else
+					qna.setReplyCnt(0);
+			}
 			mav.setViewName("qna/list");
 			mav.addObject("qnas", list);
 		} catch (Exception e) {
@@ -67,8 +76,7 @@ public class QnAController {
 		QnA qna = null;
 		List<QnA> list = null;
 		try {
-			qna = service.findByQnANo(qnaNo);
-			list = service.selectReply(qnaNo);
+			qna = service.findByQnANo(qnaNo);			
 			mav.setViewName("qna/view");
 			mav.addObject("qna", qna);
 		}catch(Exception e) {
@@ -78,7 +86,7 @@ public class QnAController {
 		return mav;
 	}
 	
-	@GetMapping("qna/reply/{no}")
+	@GetMapping("/qna/reply/{no}")
 	public List<QnA> getReply(@PathVariable("no") int qnaNo){
 		List<QnA> list = null;
 		try {
@@ -89,5 +97,88 @@ public class QnAController {
 		return list;
 	}
 	
+	@PutMapping("/qna/reply")
+	public String modifyReply(QnA qna) {
+		String result = null;
+		try {
+			if(service.modifyReply(qna) >= 1) {
+				result = "suc";
+			}else {
+				result = "err";
+			}
+		}catch(Exception e) {
+			result = "err"; 
+		}
+		return result;
+	}
 	
+	@DeleteMapping("/qna/reply/{no}")
+	public String removeReply(@PathVariable("no") int qnaNo){
+		String result = null;
+		try {
+			if(service.removeReply(qnaNo) >= 1) {
+				result = "suc";
+			}else {
+				result = "err";
+			}
+		}catch(Exception e) {
+			result = "err"; 
+		}
+		return result;
+	}
+	
+	@PostMapping("/qna/reply")
+	public String registryReply(QnA qna) {
+		String result = null;
+		try {
+			if(service.regitryReply(qna) >= 1) {
+				result = "suc";
+			}else {
+				result = "err";
+			}
+		}catch(Exception e) {
+			result = "err"; 
+		}
+		return result;
+	}
+	
+	@GetMapping("/qna/reply/cnt/{no}")
+	public QnA getReplyCount(@PathVariable int no) {
+		QnA qna = null;
+		try {
+			qna = service.getReplyCount(no);
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return qna;
+	}
+	
+	@PutMapping("/qna")
+	public String updateQnA(QnA qna) {
+		String result = null;
+		try {
+			if(service.modify(qna) >= 1) {
+				result = "suc";
+			}else {
+				result = "err";
+			}
+		}catch(Exception e) {
+			result = "err"; 
+		}
+		return result;
+	}
+	@DeleteMapping("/qna/{no}")
+	public String deleteQnA(@PathVariable int no) {
+		String result = null;
+		try {
+			if(service.remove(no) >= 1) {
+				result = "suc";
+			}else {
+				result = "err";
+			}
+		}catch(Exception e) {
+			result = "err"; 
+		}
+		return result;
+	}
 }

@@ -37,43 +37,66 @@ public class QnAServiceImpl implements QnAService {
 
 	@Override
 	public int regitry(MultipartFile file, QnA qna) throws Exception {
-		System.out.println(qna);
 		String url = null;
 		int result = 0;
 		try {
 			// 파일 정보
 			String originFilename = file.getOriginalFilename();
-			String extName = originFilename.substring(originFilename.lastIndexOf("."), originFilename.length());
-			Long size = file.getSize();
-
-			// 서버에서 저장 할 파일 이름
-			String saveFileName = genSaveFileName(extName);
-
-			qna.setQnaImage(saveFileName);
-			result = repository.insert(qna);
-			writeFile(file, saveFileName);
-			url = PREFIX_URL + saveFileName;
-		} catch (IOException e) {
+			String extName = null;
+			try {
+				extName = originFilename.substring(originFilename.lastIndexOf("."), originFilename.length());
+				Long size = file.getSize();
+				// 서버에서 저장 할 파일 이름
+				String saveFileName = genSaveFileName(extName);
+				System.out.println(size);
+				writeFile(file, saveFileName);
+				url = PREFIX_URL + saveFileName;
+				qna.setQnaImage(saveFileName);
+				result = repository.insert(qna);
+			} catch (Exception e) {
+				qna.setQnaImage("no_image.png");
+				result = repository.insert(qna);
+			}
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 		return result;
 	}
-	
+
 	@Override
 	public List<QnA> selectReply(int no) throws Exception {
 		List<QnA> list = repository.selectReply(no);
-		System.out.println(no + " " + list);
 		return list;
 	}
 
 	@Override
-	public int modify(QnA qun) throws Exception {
-		return repository.update(qun);
+	public int modify(QnA qua) throws Exception {
+		return repository.update(qua);
 	}
 
 	@Override
 	public int remove(int no) throws Exception {
 		return repository.delete(no);
+	}
+
+	@Override
+	public int regitryReply(QnA qna) throws Exception {
+		return repository.insertReply(qna);
+	}
+
+	@Override
+	public int modifyReply(QnA qna) throws Exception {
+		return repository.updateReply(qna);
+	}
+
+	@Override
+	public int removeReply(int no) throws Exception {
+		return repository.deleteReply(no);
+	}
+
+	@Override
+	public QnA getReplyCount(int no) throws Exception {
+		return repository.getReplyCount(no);
 	}
 
 	// 현재 시간을 기준으로 파일 이름 생성
@@ -104,4 +127,5 @@ public class QnAServiceImpl implements QnAService {
 
 		return result;
 	}
+
 }

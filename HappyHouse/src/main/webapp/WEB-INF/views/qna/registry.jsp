@@ -9,10 +9,24 @@
 <link rel='stylesheet' type='text/css' href='${root}/css/login.css' /> <!-- css/login.css -->
 <title>Log In</title>
 <script type="text/javascript">
-	function submit(){
-		document.getElementById("form").action = "${root}/api/qna";
-		document.getElementById("form").submit();
-	}
+function submit(){
+	$.ajax({
+		type: 'POST',
+		enctype: 'multipart/form-data',
+		url : '/happyhouse/api/qna',
+		data : new FormData($('#form')[0]),
+		processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        success: function (data) {
+            location.href = "${root}/api/qna";
+        },
+        error: function (e) {
+            console.log("ERROR : ", e);
+        }
+	});	
+}
 </script>
 </head>
 <body>

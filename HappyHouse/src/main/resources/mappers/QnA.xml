@@ -28,7 +28,8 @@
 				and qna_content like concat('%', #{word},'%')
 			</if>
 		</if>
-		GROUP BY qnaNo;
+		GROUP BY qnaNo
+		ORDER BY qna_datetime DESC;
 	</select>
 	
 	<insert id="insert">
@@ -68,4 +69,37 @@
 		SET reply_content = #{replyContent}
 		WHERE reply_no = #{replyNo};
 	</update>
+	
+	<delete id="deleteReply">
+		DELETE FROM reply
+		WHERE reply_no = #{no};
+	</delete>
+	
+	<insert id="insertReply">
+		INSERT INTO reply(reply_qna_no, reply_qna_user_no, reply_content)
+		VALUE(#{replyQnaNo}, #{replyQnaUserNo}, #{replyContent});
+	</insert>
+	
+	<!-- 댓글 개수 가져오기 -->
+	<select id="getReplyCount" resultType="QnA">
+	SELECT
+		reply_qna_no as replyQnaNo,
+	    count(reply_no) as replyCnt
+	FROM reply
+	WHERE reply_qna_no = #{no}
+	GROUP BY reply_qna_no;
+	</select>
+	
+	<!-- QnA 수정하기 -->
+	<update id="update">
+		UPDATE qna
+		SET qna_title = #{qnaTitle}, qna_content = #{qnaContent}
+		WHERE qna_no = #{qnaNo};
+	</update>
+	
+	<!-- QnA 삭제하기 -->
+	<delete id="delete">
+		DELETE FROM qna
+		WHERE qna_no = #{qnaNo}
+	</delete>
 </mapper>

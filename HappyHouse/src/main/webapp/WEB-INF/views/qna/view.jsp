@@ -15,8 +15,13 @@
 p{
 	color: white;
 }
+hr{
+	border: solid 1px white;
+}
 </style>
 <script type="text/javascript">
+var tempTitle = '';
+var tempContent = '';
 $(document).ready(function(){
 	$.ajax({
 		type:'GET',
@@ -27,8 +32,8 @@ $(document).ready(function(){
 	          		tempStr += "<div class='media-body'>";
 	          		tempStr +=  "<h5 class='mt-0' style='color: white;'>"+vo.name+"(" + vo.id +")</h5>";
 	            	tempStr +="<p id='reply_update_"+vo.replyNo+"'>"+ vo.replyContent+"</p>"
-	            	if(check(${qna.qnaUserNo}, vo.replyQnaUserNo)){
-		            	tempStr += "<button onclick='updateReply("+vo.replyNo+")' class='btn btn-primary'>댓글 수정하기</button>";
+	            	if(check(${userinfo.userNo}, vo.replyQnaUserNo)){
+		            	tempStr += "<button onclick='updateReply("+vo.replyNo+")' class='btn btn-primary'>댓글 수정하기</button> ";
 		            	tempStr += "<button onclick='removeReply("+vo.replyNo+")' class='btn btn-primary'>댓글 삭제하기</button>";
 	            	}
 					tempStr += "</div></div><hr>";
@@ -40,17 +45,120 @@ $(document).ready(function(){
 		}
 	});
 	function check(writer, replyWriter){
-		return writer == replyWriter;
+		console.log(writer + " " + replyWriter);
+		return writer === replyWriter;
 	}
+	tempTitle = $('#qna_title').text();
+ 	tempContent = $('#qna_content').text();
 });
 function removeReply(no){
-	console.log($('#reply_input').val());
+	$.ajax({
+		type : 'DELETE',
+		url : '/happyhouse/api/qna/reply/' + no,
+		success: function(data){
+			if(data == 'suc'){
+				location.href = '${root}/api/qna/${qna.qnaNo}';	
+			}else{
+				alert("삭제중 오류가 발생했습니다.");
+			}
+		},
+		error: function(data){
+			
+		}
+	});
 }
 function updateReply(no){
 	$('#reply_update_'+no).text('');
 	$('#reply_update_'+no).append('<textarea type="text" id="reply_input" style="width: 100%"></textarea>');
-	$('#reply_update_'+no).append('<button class="btn btn-primary" onclick="update">확인</button>');
+	$('#reply_update_'+no).append('<button class="btn btn-primary" onclick="update('+no+')">확인</button>');
 }
+function updateForm(){
+	let titleTag = '<input type="text" id="qna_title_input" value='+tempTitle+' style="width: 100%"></input>';
+	let contentTag = '<textarea type="text" id="qna_content_input" style="width: 100%"></textarea>';
+	$('#qna_title').text('');
+	$('#qna_content').text('');
+	$('#qna_title').append(titleTag);
+	$('#qna_content').append(contentTag);
+	$('#qna_content_input').val(tempContent);
+	$('#qna_content').append('<button class="btn btn-primary" onclick="updatePost()">수정 완료 하기</button>');
+}
+function updatePost(){
+	$.ajax({
+		type : 'PUT',
+		url : '/happyhouse/api/qna',
+		data : {
+			qnaNo : ${qna.qnaNo},
+			qnaTitle : $('#qna_title_input').val(),
+			qnaContent : $('#qna_content_input').val()
+		},
+		success: function(data){
+			if(data == 'suc'){
+				location.href = '${root}/api/qna/${qna.qnaNo}';	
+			}else{
+				alert("게시글 수정 중 오류가 발생했습니다.");
+			}
+		},
+		error: function(data){
+			
+		}
+	});
+}
+
+function removePost(){
+	$.ajax({
+		type : 'DELETE',
+		url : '/happyhouse/api/qna/${qna.qnaNo}',
+		success: function(data){
+			if(data == 'suc'){
+				location.href = '${root}/api/qna';	
+			}else{
+				alert("게시글 삭제 중 오류가 발생했습니다.");
+			}
+		},
+		error: function(data){
+			
+		}
+	});
+}
+function update(no){
+	$.ajax({
+		type : 'PUT',
+		url : '/happyhouse/api/qna/reply',
+		data : {
+			replyNo : no,
+			replyContent : $('#reply_input').val()
+		},
+		success: function(data){
+			if(data == 'suc'){
+				location.href = '${root}/api/qna/${qna.qnaNo}';	
+			}else{
+				alert("수정중 오류가 발생했습니다.");
+			}
+		},
+		error: function(data){
+			
+		}
+	});
+}
+
+function insertReply(userNo){
+	$.ajax({
+		type : 'POST',
+		url : '/happyhouse/api/qna/reply',
+		data :{
+			replyQnaNo : ${qna.qnaNo},
+			replyQnaUserNo : ${userinfo.userNo},
+			replyContent : $('#reply_write').val()
+		},
+		success:function(data){
+			if(data == 'suc'){
+				location.href = '${root}/api/qna/${qna.qnaNo}';	
+			}else{
+				alert('댓글 등록중 오류가 발생했습니다.');
+			}
+		}
+	});
+} 
 </script>
 </head>
 <body>
@@ -63,38 +171,49 @@ function updateReply(no){
       <!-- Post Content Column -->
       <div class="col-lg-8">		
         <!-- Preview Image -->
+		<div style="float: right;">
+			<c:if test="${ qna.qnaUserNo == userinfo.userNo }">
+				<button onclick="updateForm()" class="btn btn-primary">수정하기</button>
+				<button onclick="removePost()" class="btn btn-primary">삭제하기</button>
+			</c:if>
+		</div>
+		<br>
+       	<br>
+        
         <img class="img-fluid rounded" src="${ root }/images/${qna.qnaImage}" alt="">
-
-        <hr>
-       	<p style="font-size: 50px;">${qna.qnaTitle}</p> 
+		<br>
+		<br>
+       	<p id='qna_title' style="font-size: 50px;">${qna.qnaTitle}</p> 
         <hr>
 
         <!-- Post Content -->
-        <p class="lead">${ qna.qnaContent }</p>
-
-        <hr>
-
-		<p>Posted on ${qna.qnaDatetime}</p>
+        <p id='qna_content' class="lead">${ qna.qnaContent }</p>
+		
+		<br>
+		<div>
+			<div style="float: left;">
+				<p>Posted on ${qna.qnaDatetime}</p>
+			</div>
+			<div style="float: right;">
+				<p>Written by ${ qna.name }</p>
+			</div>
+		</div>
+		<br><br><br><br><br>
         <!-- Comments Form -->
-        <div class="card my-4">
+        <div class="card my-4" style="width: 100%">
           <h5 class="card-header">Leave a Comment:</h5>
           <div class="card-body">
-            <form>
               <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea id="reply_write" class="form-control" rows="3"></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+              <button onclick="insertReply();" class="btn btn-primary">Submit</button>
           </div>
         </div>
 
 		<br>
 		
-		<div id="div_reply"></div>
         <!-- Single Comment -->
-        <%-- <c:forEach var="reply" items="${ replys }">
-        	
-        </c:forEach> --%>
+        <div id="div_reply"></div>
       </div>
 
       <!-- Sidebar Widgets Column -->

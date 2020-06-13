@@ -13,6 +13,7 @@ public class QnA {
 	private Date replyDatetime;
 	private int replyNo;
 	private int replyQnaUserNo;
+	private int replyQnaNo;
 	private int replyCnt;
 	private String name;
 	private String id;
@@ -23,7 +24,7 @@ public class QnA {
 
 	public QnA(int qnaNo, String qnaTitle, String qnaContent, String qnaImage, int qnaUserNo, Date qnaDatetime,
 			String replyContent, Date replyDatetime, int replyNo, int replyQnaUserNo, int replyCnt, String name,
-			String id) {
+			String id, int replyQnaNo) {
 		super();
 		this.qnaNo = qnaNo;
 		this.qnaTitle = qnaTitle;
@@ -38,6 +39,7 @@ public class QnA {
 		this.replyCnt = replyCnt;
 		this.name = name;
 		this.id = id;
+		this.replyCnt = replyCnt;
 	}
 
 	public int getQnaNo() {
@@ -144,14 +146,21 @@ public class QnA {
 		this.id = id;
 	}
 
+	public int getReplyQnaNo() {
+		return replyQnaNo;
+	}
+
+	public void setReplyQnaNo(int replyQnaNo) {
+		this.replyQnaNo = replyQnaNo;
+	}
+
 	@Override
 	public String toString() {
 		return "QnA [qnaNo=" + qnaNo + ", qnaTitle=" + qnaTitle + ", qnaContent=" + qnaContent + ", qnaImage="
 				+ qnaImage + ", qnaUserNo=" + qnaUserNo + ", qnaDatetime=" + qnaDatetime + ", replyContent="
 				+ replyContent + ", replyDatetime=" + replyDatetime + ", replyNo=" + replyNo + ", replyQnaUserNo="
-				+ replyQnaUserNo + ", replyCnt=" + replyCnt + ", name=" + name + ", id=" + id + "]";
+				+ replyQnaUserNo + ", replyQnaNo=" + replyQnaNo + ", replyCnt=" + replyCnt + ", name=" + name + ", id="
+				+ id + "]";
 	}
-
-	
 
 }

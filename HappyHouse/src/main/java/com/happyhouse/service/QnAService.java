@@ -18,4 +18,12 @@ public interface QnAService {
 	int modify(QnA qun) throws Exception;
 	
 	int remove(int no) throws Exception;
+	
+	int regitryReply(QnA qna) throws Exception;
+	
+	int modifyReply(QnA qna) throws Exception;
+	
+	int removeReply(int no) throws Exception;
+	
+	QnA getReplyCount(int no) throws Exception;
 }

@@ -18,4 +18,12 @@ public interface QnARepository {
 	int update(QnA qna) throws Exception;
 	
 	int delete(int no) throws Exception;
+	
+	int insertReply(QnA qna) throws Exception;
+	
+	int updateReply(QnA qna) throws Exception;
+	
+	int deleteReply(int no) throws Exception;
+	
+	QnA getReplyCount(int no) throws Exception;
 }
