@@ -13,6 +13,7 @@
 				<p id="modaltext">Some text in the modal.</p>
 			</div>
 			<div class="modal-footer">
+				<button type="button" id="confirm" class="btn btn-default" data-dismiss="modal" style="display: none;">OK</button>
 				<button type="button" id="modalok" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>

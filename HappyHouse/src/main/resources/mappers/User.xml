@@ -37,25 +37,46 @@
 	<select id="userList" resultType="User">
 		select user_no as userNo, id, password, name, tel, address
 		from user
-	</select>
-	
-	<!-- 삭제 -->
-	<select id="delete">
-		delete from user
-		where user_no = #{no}
-	</select>
-
-	<!-- 검색 -->
-	<select id="searchList" resultType="User">
-		select user_no as userNo, id, password, name, tel, address
-		from user
-		<if test="value != null">
-			<if test="type == 'id'">
-				where id like concat('%', #{value}, '%')
+		where 1=1
+		<if test="key != 'all'">
+			<if test="key == 'id'">
+				and id like concat('%', #{word}, '%')
 			</if>
-			<if test="type == 'name'">
-				where name like concat('%', #{value}, '%')
+			<if test="key == 'name'">
+				and name like concat('%',#{word},'%')
 			</if>
 		</if>
+		<if test="key == 'all'">
+			and (id like concat('%', #{word}, '%')
+			or name like concat('%',#{word},'%'))
+		</if>
+		limit #{currentPage}, #{sizePerPage}
 	</select>
+
+	<!-- 삭제 -->
+	<select id="delete" resultType="Integer">
+		delete from user
+		where user_no in
+		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+	
+	<select id="getTotalCount" resultType="Integer">
+		select count(*)
+		from user
+		where 1=1
+		<if test="key != 'all'">
+			<if test="key == 'id'">
+				and id like concat('%', #{word}, '%')
+			</if>
+			<if test="key == 'name'">
+				and name like concat('%',#{word},'%')
+			</if>
+		</if>
+		<if test="key == 'all'">
+			and (id like concat('%', #{word}, '%')
+			or name like concat('%',#{word},'%'))
+		</if>
+   </select>
 </mapper>

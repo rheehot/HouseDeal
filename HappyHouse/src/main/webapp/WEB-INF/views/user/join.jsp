@@ -61,8 +61,12 @@
 				address : $('#useraddr').val(),
 			},
 			success : function(data) {
-				alert('등록완료');
-				location.href = '${root}';
+				$('#modaltext2').text('회원가입이 완료되었습니다.');
+				$('#modaltitle2').text('Success To SignUp');
+				$('#myModal2').modal('show');
+				$('#modalok2').click(function() {
+					location.href = '${root}';
+				})
 			}
 		})
 	}
@@ -102,7 +106,25 @@
 			</form>
 		</div>
 	</div>
-	
+
+	<div id="myModal2" class="modal fade" role="dialog"
+		style="display: none">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="modaltitle2">Fail To LogIn</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p id="modaltext2">Some text in the modal.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="modalok2" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<%@ include file="../modal.jsp"%>
 	<%@ include file="../footer.jsp"%>
 </body>

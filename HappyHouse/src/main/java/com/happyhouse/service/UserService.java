@@ -3,6 +3,7 @@ package com.happyhouse.service;
 import java.util.List;
 
 import com.happyhouse.domain.User;
+import com.happyhouse.util.PageNavigation;
 
 public interface UserService {
 	User login(User user);
@@ -13,9 +14,11 @@ public interface UserService {
 	
 	int Modify(User user);
 	
-	List<User> list();
+	List<User> list(int currentPage, int sizePerPage, String key, String word);
 	
 	List<User> search(String type, String value);
 	
-	int remove(int no);
+	Integer remove(int[] list);
+
+	PageNavigation makePageNavigation(int currentPage, int sizePerPage, String key, String word);
 }
