@@ -16,4 +16,9 @@ public class HomeController {
 	public String movePageQnAInsert() {
 		return "qna/registry";
 	}
+	
+	@GetMapping("move/dust")
+	public String moveDust() {
+		return "dust/index";
+	}
 }

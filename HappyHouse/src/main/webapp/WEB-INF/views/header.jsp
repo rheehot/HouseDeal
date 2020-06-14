@@ -14,6 +14,7 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
+			<li class="nav-item"><a class="nav-link" href="${root}/move/dust">실시간 미세먼지 정보(temp)</a></li>
 				<li class="nav-item"><a class="nav-link" href="about.html">공지사항</a></li>
 				<li class="nav-item"><a class="nav-link" href="${root}/api/qna">QnA</a></li>
 				<c:if test="${ userinfo == null }">

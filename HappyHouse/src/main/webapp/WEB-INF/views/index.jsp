@@ -7,6 +7,14 @@
 <head>
 <%@ include file="setting.jsp"%>
 <title>Happy House</title>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+});
+function showMain(){
+	console.log("test");
+}
+</script>
 </head>
 
 <body>
@@ -23,26 +31,26 @@
 			<div class="carousel-inner" role="listbox">
 				<!-- Slide One - Set the background image for this slide in the line below -->
 				<div class="carousel-item active"
-					style="background-image: url('http://placehold.it/1900x1080')">
+					style="background-image: url('https://cdn.wallpapersafari.com/80/94/wfc1rJ.jpg')">
 					<div class="carousel-caption d-none d-md-block">
-						<h3>First Slide</h3>
-						<p>This is a description for the first slide.</p>
+						<h3>Happy Seoul House</h3>
+						<p>해피 서울 하우스에 오신것을 환영합니다.</p>
 					</div>
 				</div>
 				<!-- Slide Two - Set the background image for this slide in the line below -->
 				<div class="carousel-item"
-					style="background-image: url('http://placehold.it/1900x1080')">
+					style="background-image: url('https://lh4.googleusercontent.com/proxy/gSITt5dYe68aKdex4tVMq1uAG6Z2N9EMfg9KGhiTtrn4HEI-H-oJGnA40gT2ScIdw_3tafBJiKWqfnUgIvGVCE-9K-FB9GvDYuPxvkrxtPKpPFB_5n40DFThMhrAqA3xhOtxDtOmN0k5Inz0SsxI84iovL2C8KWyREwA=s0-d')">
 					<div class="carousel-caption d-none d-md-block">
-						<h3>Second Slide</h3>
-						<p>This is a description for the second slide.</p>
+						<h3>What house do you want?</h3>
+						<p>당신은 어떤 하우스 정보를 얻고 싶으신가요?</p>
 					</div>
 				</div>
 				<!-- Slide Three - Set the background image for this slide in the line below -->
 				<div class="carousel-item"
-					style="background-image: url('http://placehold.it/1900x1080')">
+					style="background-image: url('https://wallpaperaccess.com/full/295822.jpg')">
 					<div class="carousel-caption d-none d-md-block">
-						<h3>Third Slide</h3>
-						<p>This is a description for the third slide.</p>
+						<h3>Add a region of interest!</h3>
+						<p>지금 당장 관심지역을 추가해서 다양하게 확인하세요!</p>
 					</div>
 				</div>
 			</div>
@@ -60,166 +68,25 @@
 	<!-- Page Content -->
 	<div class="container">
 
-		<h1 class="my-4">Welcome to Modern Business</h1>
-
-		<!-- Marketing Icons Section -->
-		<div class="row">
-			<div class="col-lg-4 mb-4">
-				<div class="card h-100">
-					<h4 class="card-header">Card Title</h4>
-					<div class="card-body">
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Sapiente esse necessitatibus neque.</p>
-					</div>
-					<div class="card-footer">
-						<a href="#" class="btn btn-primary">Learn More</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 mb-4">
-				<div class="card h-100">
-					<h4 class="card-header">Card Title</h4>
-					<div class="card-body">
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus
-							commodi similique totam consectetur praesentium molestiae atque
-							exercitationem ut consequuntur, sed eveniet, magni nostrum sint
-							fuga.</p>
-					</div>
-					<div class="card-footer">
-						<a href="#" class="btn btn-primary">Learn More</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 mb-4">
-				<div class="card h-100">
-					<h4 class="card-header">Card Title</h4>
-					<div class="card-body">
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Sapiente esse necessitatibus neque.</p>
-					</div>
-					<div class="card-footer">
-						<a href="#" class="btn btn-primary">Learn More</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /.row -->
-
-		<!-- Portfolio Section -->
-		<h2>Portfolio Heading</h2>
-
-		<div class="row">
-			<div class="col-lg-4 col-sm-6 portfolio-item">
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top"
-						src="http://placehold.it/700x400" alt=""></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="#">Project One</a>
-						</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Amet numquam aspernatur eum quasi sapiente
-							nesciunt? Voluptatibus sit, repellat sequi itaque deserunt,
-							dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-sm-6 portfolio-item">
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top"
-						src="http://placehold.it/700x400" alt=""></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="#">Project Two</a>
-						</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-							urna varius vitae.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-sm-6 portfolio-item">
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top"
-						src="http://placehold.it/700x400" alt=""></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="#">Project Three</a>
-						</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Quos quisquam, error quod sed cumque, odio
-							distinctio velit nostrum temporibus necessitatibus et facere
-							atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-sm-6 portfolio-item">
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top"
-						src="http://placehold.it/700x400" alt=""></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="#">Project Four</a>
-						</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-							urna varius vitae.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-sm-6 portfolio-item">
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top"
-						src="http://placehold.it/700x400" alt=""></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="#">Project Five</a>
-						</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipiscing elit. Nam viverra euismod odio, gravida pellentesque
-							urna varius vitae.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-sm-6 portfolio-item">
-				<div class="card h-100">
-					<a href="#"><img class="card-img-top"
-						src="http://placehold.it/700x400" alt=""></a>
-					<div class="card-body">
-						<h4 class="card-title">
-							<a href="#">Project Six</a>
-						</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Itaque earum nostrum suscipit ducimus nihil
-							provident, perferendis rem illo, voluptate atque, sit eius in
-							voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /.row -->
+		<h1 class="my-4">Welcome to Happy House</h1>
 
 		<!-- Features Section -->
 		<div class="row">
 			<div class="col-lg-6">
-				<h2>Modern Business Features</h2>
-				<p>The Modern Business template by Start Bootstrap includes:</p>
+				<h2>Happy House Features</h2>
+				<p>저희 해피하우스는 다음과 같은 서비스를 제공해드립니다.</p>
 				<ul>
-					<li><strong>Bootstrap v4</strong></li>
-					<li>jQuery</li>
-					<li>Font Awesome</li>
-					<li>Working contact form with validation</li>
-					<li>Unstyled page elements for easy customization</li>
+					<li>구글 맵과 연동한 하우스 정보 제공</li>
+					<li>여러 고객들과 소통할 자유 게시판</li>
+					<li>서울구별 실시간 미세먼지 상황</li>
+					<li>하우스 정보 검색 및 확인</li>
+					<li>----</li>
 				</ul>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Corporis, omnis doloremque non cum id reprehenderit, quisquam totam
-					aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis
-					quia dolorum ducimus unde.</p>
+				<p>해피하우스는 여러분들이 필요한 데이터와 정보들을 더 좋은 서비스로 제공해드리기 위해
+				최선을 다하겠습니다.</p>
 			</div>
 			<div class="col-lg-6">
-				<img class="img-fluid rounded" src="http://placehold.it/700x450"
-					alt="">
+				<img class="img-fluid rounded" src="images/attention.png" alt="">
 			</div>
 		</div>
 		<!-- /.row -->
@@ -229,16 +96,14 @@
 		<!-- Call to Action Section -->
 		<div class="row mb-4">
 			<div class="col-md-8">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum
-					neque nemo praesentium cum alias asperiores commodi.</p>
+				<h4>그럼 지금 바로 검색을 이용해보세요!</h4>
 			</div>
 			<div class="col-md-4">
-				<a class="btn btn-lg btn-secondary btn-block" href="#">Call to
-					Action</a>
+				<a class="btn btn-lg btn-secondary btn-block" onClick="showMain()">Call to Action</a>
 			</div>
 		</div>
 
+		<%@ include file="dust/index.jsp"%>
 	</div>
 	<!-- /.container -->
 

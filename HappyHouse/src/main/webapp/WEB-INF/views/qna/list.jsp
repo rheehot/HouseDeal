@@ -10,7 +10,25 @@
 <!-- css/login.css -->
 <title>Log In</title>
 <script type="text/javascript">
-	
+function login() {
+	if (document.getElementById("userid").value == "") {
+		$('#modaltext').text('아이디를 입력해 주세요.');
+		$('#myModal').modal('show');
+		return;
+	} else if (document.getElementById("userpwd").value == "") {
+		$('#modaltext').text('비밀번호를 입력해 주세요.');
+		$('#myModal').modal('show');
+		return;
+	} else {
+		document.getElementById("loginform").action = "${root}/user/login";
+		$('#login_link').val("qna/list");
+		console.log($('#login_link').val());
+		document.getElementById("loginform").submit();
+	}
+}
+function moveJoin() {
+	document.location.href = "${ root }/user/joinpage";
+}
 </script>
 </head>
 <body>
@@ -19,8 +37,26 @@
 	<div class="container">
 		<div style="margin-top: 100px;">
 			<c:if test="${ userinfo == null }">
-				<h3>로그인이 필요한 페이지 입니다.</h3>
-				<button type="button" class="btn btn-warning" onclick="login()"></button>
+				<h3 style="color: white;">로그인이 필요한 페이지 입니다.</h3>
+				<div class="login-box">
+					<h2>LogIn</h2>
+					<form id="loginform" method="post" action="">
+						<input type="hidden" name="act" value="login">
+						<input id="login_link" type="hidden" name="address" value="">
+						<div class="user-box">
+							<input type="text" id="userid" name="id" required=""> <label>ID</label>
+						</div>
+						<div class="user-box">
+							<input type="password" id="userpwd" name="password" required="" onkeydown="javascript:if(event.keyCode == 13) {login();}"> <label>Password</label>
+						</div>
+						<a href="#" onclick="javascript:login();"> <span></span> <span></span> <span></span> <span></span>
+							LogIn
+						</a>
+						<a href="#" onclick="javascript:moveJoin();"> <span></span> <span></span> <span></span> <span></span>
+							SignUp
+						</a>
+					</form>
+				</div>
 			</c:if>
 			<c:if test="${ userinfo != null }">
 				<!-- Page Heading/Breadcrumbs -->
