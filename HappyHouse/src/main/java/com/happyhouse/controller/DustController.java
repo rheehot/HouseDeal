@@ -19,6 +19,10 @@ public class DustController {
 	
 	@GetMapping("/dust")
 	public List<Dust> getDusts(){
-		return service.findAll();
+		List<Dust> list =service.findAll();
+		for(Dust dust : list) {
+			System.out.println(dust);
+		}
+		return list;
 	}
 }
