@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/gueset.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mappers/user.xml -->
+<mapper namespace="com.happyhouse.repository.FavoriteRepository"> <!-- mybatis는 namespace필수!! -->
+
+	<select id="selectSido" resultType="Sido">
+		select sido_code as sidoCode, sido_name as sidoName
+		from sidocode
+	</select>
+	
+	<select id="selectGugun" resultType="Gugun">
+		select gugun_code as gugunCode, gugun_name as gugunName
+		from guguncode
+		where gugun_code like concat(#{code}, '%')
+	</select>
+	
+	<select id="selectFavoriteLocation" resultType="FavoriteLocation">
+		select code, user_no as userNo
+		from fav_location
+		where user_no = #{userNo}
+	</select>
+	
+	<insert id="insert">
+		insert into fav_location(code, user_no)
+		values(#{code}, #{userNo})
+	</insert>
+	
+	<update id="update">
+		update fav_location
+		set code = #{code}
+		where user_no = #{userNo}
+	</update>
+	
+</mapper>

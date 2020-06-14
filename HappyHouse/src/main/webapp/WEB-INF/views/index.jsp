@@ -103,7 +103,7 @@ function showMain(){
 			</div>
 		</div>
 
-		<%@ include file="dust/index.jsp"%>
+		<%-- <%@ include file="dust/index.jsp"%> --%>
 	</div>
 	<!-- /.container -->
 
