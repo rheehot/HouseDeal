@@ -31,9 +31,9 @@
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
 							<!-- admin일 경우 회원 목록 보기 + 삭제 기능 추가 -->
 							<c:if test="${userinfo.getId() eq 'admin'}">
-								<a class="dropdown-item" href="${ root }/user/userlist">회원관리</a>
+								<a class="dropdown-item" href="${ root }/user/userlist/1">회원관리</a>
 							</c:if>
-							<a class="dropdown-item" href="">관심지역 변경</a>
+							<a class="dropdown-item" href="${ root }/favorite/changeloc">관심지역 변경</a>
 							<a class="dropdown-item" href="${ root }/user/updatepage">회원정보 수정</a>
 							<a class="dropdown-item" href="${ root }/user/logout">로그아웃</a>
 						</div>

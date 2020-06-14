@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.happyhouse.domain.User;
 import com.happyhouse.service.UserService;
+import com.happyhouse.util.PageNavigation;
 
 @Controller
 @RequestMapping("user")
@@ -80,13 +81,18 @@ public class UserController {
 		else return "fail";
 	}
 	
-	@RequestMapping("userlist")
-	public String userList(Model model) { // String currentPage, 
+	@RequestMapping("userlist/{currentPage}")
+	public String userList(@PathVariable int currentPage, String key, String word, Model model) {
 		System.out.println("회원 정보 리스트");
-		//int sizePerPage = 10;
-		//System.out.println(Integer.parseInt(currentPage) + " " + sizePerPage);
-		List<User> list = service.list();
+		int sizePerPage = 10;
+		System.out.println(currentPage + " " + sizePerPage + " " + key + " " + word);
+		List<User> list = service.list(currentPage - 1, sizePerPage, key, word);
+		PageNavigation pageNavigation = service.makePageNavigation(currentPage, sizePerPage, key, word);
 		model.addAttribute("list", list);
+		model.addAttribute("navigation", pageNavigation);
+		model.addAttribute("key", key);
+//		model.addAttribute("list", list);
+//		model.addAttribute("list", list);
 		return "user/list";
 	}
 	
@@ -104,13 +110,15 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping("search")
-	public @ResponseBody List<User> search(String type, String value, Model model) {
-		System.out.println("검색");
-		System.out.println(type + " " + value);
-		List<User> list = service.search(type, value);
-		System.out.println(list.size());
-		return list;
+	@GetMapping("delete/{list}") // /{list}
+	public @ResponseBody String delete(@PathVariable int[] list, HttpServletRequest request) { // @PathVariable int[] list
+		//int[] list = request.getParameter("list");
+		System.out.println("삭제 시도");
+		System.out.println("개수 >> " + list.length);
+		for(int n : list) System.out.print(n + " ");
+		
+		 service.remove(list);
+		 return "success";
 	}
 
 }

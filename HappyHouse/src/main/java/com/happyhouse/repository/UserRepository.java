@@ -13,9 +13,11 @@ public interface UserRepository {
 	
 	User selectUser(String id);
 	
-	List<User> userList();
+	List<User> userList(int currentPage, int sizePerPage, String key, String word);
 	
 	List<User> searchList(String type, String value);
 	
-	int delete(int no);
+	Integer delete(int[] array);
+
+	int getTotalCount(String key, String word);
 }
