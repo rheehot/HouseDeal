@@ -1,7 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	
+
+<script>
+function boardlist() {
+	document.getElementById("pageform").action = "${root}/board/boards";
+	document.getElementById("pageform").submit();
+}
+</script>
+<form name="pageform" id="pageform" method="GET" action="">
+	<input type="hidden" name="pg" id="pg" value="1">
+	<input type="hidden" name="key" id="key" value="${key}">
+	<input type="hidden" name="word" id="word" value="${word}">
+</form>
 <!-- Navigation -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 	<div class="container">
@@ -15,7 +26,7 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 			<li class="nav-item"><a class="nav-link" href="${root}/move/dust">실시간 미세먼지 정보(temp)</a></li>
-				<li class="nav-item"><a class="nav-link" href="about.html">공지사항</a></li>
+				<li class="nav-item"><a class="nav-link" href="javascript:boardlist();">공지사항</a></li>
 				<li class="nav-item"><a class="nav-link" href="${root}/api/qna">QnA</a></li>
 				<c:if test="${ userinfo == null }">
 					<li class="nav-item"><a class="nav-link" href="${root}/user/loginpage">로그인</a></li>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.happyhouse.repository.BoardRepository">
+
+	<insert id="insert">
+		insert into board(title, content)
+		values(#{title}, #{content})
+	</insert>
+	
+	<select id="selectAll" resultType="Board" parameterType="hashmap">
+		select id, title, content, datetime
+		from board
+		where 1=1
+		<if test="key != 'all'">
+			<if test="key == 'title'">
+				and title like concat('%',#{word},'%')
+			</if>
+			<if test="key == 'content'">
+				and content like concat('%',#{word},'%')
+			</if>
+		</if>
+	</select>
+	
+	<select id="select" resultType="Board">
+		select id, title, content, datetime
+		from board
+		where id = #{id}
+	</select>
+	
+	<update id="update">
+		update board
+		set title = #{title}, content = #{content}
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+   		delete from board
+   		where id in
+   		<foreach collection="array" item="arr" open="(" close=")" separator=",">
+   			#{arr}
+   		</foreach>
+   </delete>
+   
+   <select id="getTotalCount" resultType="Integer">
+		select count(*)
+		from board
+		where 1=1
+		<if test="key != 'all'">
+			<if test="key == 'subject'">
+				and title like concat('%',#{word},'%')
+			</if>
+			<if test="key == 'content'">
+				and content like concat('%',#{word},'%')
+			</if>
+		</if>
+   </select>
+</mapper>
