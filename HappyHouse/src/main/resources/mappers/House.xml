@@ -8,7 +8,8 @@
 
 	<!-- 검색 -->
 	<select id="selectAll" resultType="HouseDeal">
-		select * from housedeal 
+		select aptname, no, dong, code, buildyear, jibun
+		from housedeal 
 		where type in
 		<foreach collection="searchNum" item="arr" open="(" close=")" separator=",">
 			<if test="arr != -1">#{arr}</if>
@@ -23,6 +24,33 @@
 			and dong like concat('%', #{dealtype}, '%')
 			or AptName like concat('%', #{dealtype}, '%')
 		</if>
+		group by aptname
 		limit #{start}, #{interval}
 	</select>
+	
+	<select id="select" resultType="HouseInfo">
+		select no, dong, aptName, code, buildYear, jibun, lat, lng, img
+		from houseinfo
+		where no=#{no}
+	</select>
+	
+	
+	<select id="getTotalCount" resultType="Integer">
+		select count(distinct aptname)
+		from housedeal
+		where type in
+		<foreach collection="searchNum" item="arr" open="(" close=")" separator=",">
+			<if test="arr != -1">#{arr}</if>
+		</foreach>
+		<if test="dong != null">
+			and dong like concat('%', #{dong}, '%')
+		</if>
+		<if test="aptname != null">
+			and AptName like concat('%', #{aptname}, '%')
+		</if>
+		<if test="dong == null and aptname == null">
+			and dong like concat('%', #{dealtype}, '%')
+			or AptName like concat('%', #{dealtype}, '%')
+		</if>
+  	 </select>
 </mapper>

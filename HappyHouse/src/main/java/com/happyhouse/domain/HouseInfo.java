@@ -105,6 +105,23 @@ public class HouseInfo implements Serializable, Comparable<HouseInfo> {
 		return 0;
 	}
 
+	
+	public HouseInfo() {
+	}
+
+	public HouseInfo(int no, String dong, String aptName, int code, int buildYear, String jibun, String lat, String lng,
+			String img) {
+		this.no = no;
+		this.dong = dong;
+		this.aptName = aptName;
+		this.code = code;
+		this.buildYear = buildYear;
+		this.jibun = jibun;
+		this.lat = lat;
+		this.lng = lng;
+		this.img = img;
+	}
+
 	@Override
 	public String toString() {
 		return "HouseInfo [no=" + no + ", dong=" + dong + ", AptName=" + aptName + ", code=" + code + ", buildYear="
