@@ -11,7 +11,6 @@
 <script>
 $(document).ready(function() {
 	$('#button-blue').click(function() {
-		alert($('#content').text());
 		$.ajax({
 			type : 'PUT',
 			url : '${root}/board/board',
@@ -21,8 +20,13 @@ $(document).ready(function() {
 				content : $('#content').val()
 			},
 			success : function(data) {
-				alert('수정완료');
-				location.href = "${root}/board/board/${board.id}";
+				$('#modaltext').text('공지사항이 수정되었습니다.');
+				$('#modaltitle').text('Success To Modify Board');
+				$('#myModal').modal('show');
+				//alert('수정완료');
+				$('#modalok').click(function() {
+					location.href = "${root}/board/board/" + $('#id').val();
+				})
 			},
 			error : function(data) {
 				alert('수정실패');

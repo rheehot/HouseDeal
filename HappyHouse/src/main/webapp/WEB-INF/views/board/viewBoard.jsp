@@ -32,8 +32,7 @@
 			},
 			success : function(data) {
 				console.log('수정완료');
-				location.href = "${root}/board/board/"
-						+ Number($('#boardid').text());
+				location.href = "${root}/board/board/" + Number($('#boardid').text());
 			},
 			error : function(data) {
 				console.log('수정실패');

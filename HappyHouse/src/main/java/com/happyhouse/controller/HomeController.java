@@ -39,7 +39,7 @@ public class HomeController {
 	
 	@PostMapping("move/modifyboardpage")
 	public String mvModifyBoard(Board board, Model model) {
-		System.out.println(board.getId() + board.getTitle() + " " + board.getContent());
+		//System.out.println(board.getId() + board.getTitle() + " " + board.getContent());
 		model.addAttribute("board", board);
 		return "board/modifyBoard";
 	}
