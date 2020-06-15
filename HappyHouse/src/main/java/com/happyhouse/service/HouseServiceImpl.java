@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.happyhouse.domain.HouseDeal;
+import com.happyhouse.domain.HouseInfo;
 import com.happyhouse.domain.HousePageBean;
 import com.happyhouse.repository.HouseRepository;
+import com.happyhouse.util.PageNavigation;
 
 @Service
 public class HouseServiceImpl implements HouseService {
@@ -18,6 +20,29 @@ public class HouseServiceImpl implements HouseService {
 	@Override
 	public List<HouseDeal> searchAll(HousePageBean bean) {
 		return repo.selectAll(bean);
+	}
+
+	@Override
+	public PageNavigation makePageNavigation(int currentPage, int sizePerPage, HousePageBean bean) {
+		PageNavigation pageNavigation = new PageNavigation();
+		int naviSize = 10; // 페이지 개수
+		pageNavigation.setCurrentPage(currentPage);
+		pageNavigation.setNaviSize(naviSize);
+		int totalCount = repo.getTotalCount(bean); // 총 게시글 수
+		pageNavigation.setTotalCount(totalCount);
+		int totalPageCount = (totalCount - 1) / naviSize + 1; // 총 페이지 수 naviSize(sizePerPage)
+		pageNavigation.setTotalPageCount(totalPageCount); // 300 / 10 ==> 30
+		boolean startRange = currentPage <= naviSize; // true : 이전 x false : 이전 o
+		pageNavigation.setStartRange(startRange);
+		boolean endRange = (totalPageCount - 1) / naviSize * naviSize < currentPage; // true : 다음 x false : 다음 o
+		pageNavigation.setEndRange(endRange);
+		pageNavigation.makeNavigator();
+		return pageNavigation;
+	}
+
+	@Override
+	public HouseInfo detail(int no) {
+		return repo.select(no);
 	}
 
 }

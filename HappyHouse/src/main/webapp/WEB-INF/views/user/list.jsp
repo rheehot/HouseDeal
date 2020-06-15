@@ -28,7 +28,7 @@
 		values = document.getElementsByName("dels");
 		
 		console.log(list);
-		for(var i = 0; i < dels.length; i++) {
+		for(var i = 0; i < values.length; i++) {
 			if(values[i].checked) {
 				list.push(values[i].value);
 				console.log(values[i].value);
