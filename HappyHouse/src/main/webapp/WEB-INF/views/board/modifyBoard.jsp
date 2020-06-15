@@ -17,7 +17,7 @@ $(document).ready(function() {
 			data : {
 				id : $('#id').val(),
 				title : $('#title').val(),
-				content : $('#content').val()
+				content : $('#content').val().replace(/\n/g,"<br>")
 			},
 			success : function(data) {
 				$('#modaltext').text('공지사항이 수정되었습니다.');
@@ -42,7 +42,6 @@ $(document).ready(function() {
 
 	<div id="form-main">
 		<div id="form-div">
-			<form class="form" id="form" method="" action="">
 				<input type="hidden" id="id" value="${board.id}">
 				<p class="name">
 					<input name="title" type="text" id="title"
@@ -60,7 +59,6 @@ $(document).ready(function() {
 					<input type="button" value="등록" id="button-blue" onclick="submit();" />
 					<div class="ease"></div>
 				</div>
-			</form>
 		</div>
 	</div>
 

@@ -15,7 +15,7 @@ function submin(){
 		url : '${ root }/board/writeboard',
 		data : {
 			title : $("#title").val(),
-			content : $("#content").val()
+			content : $("#content").val().replace(/\n/g,"<br>")
 		},
 		success : function(data) {
 			$('#modaltext').text('공지사항이 등록되었습니다');
