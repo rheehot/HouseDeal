@@ -61,38 +61,41 @@
 					<%-- <img id="img" src="${root}/img/${ imgurl }.jpg" onerror="setImg();"> --%>
 				</div>
 			</div>
-			<table">
-				<thead class="table-primary">
-					<tr>
-						<th>번호</th>
-						<th>동 명</th>
-						<th>아파트 이름</th>
-						<th>건축 년도</th>
-						<th>거래 월/일</th>
-						<th>크기</th>
-						<th>층 수</th>
-						<th>지번</th>
-						<th>임대료</th>
-						<th>거래액</th>
-					</tr>
-				</thead>
-				<tbody class="table-hover">
-					<c:forEach var="house" items="${ houses }">
-						<tr class="table-light">
-							<th>${ house.no }</th>
-							<th>${ house.dong }</th>
-							<th>${ house.aptName }</th>
-							<th>${ house.buildYear }</th>
-							<th>${ house.dealMonth } / ${ house.dealDay }</th>
-							<th>${ house.area }</th>
-							<th>${ house.floor }</th>
-							<th>${ house.jibun }</th>
-							<th>${ house.rentMoney }</th>
-							<th>${ house.dealAmount }</th>
+
+			<div id="listall">
+				<table>
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>동 명</th>
+							<th>아파트 이름</th>
+							<th>건축 년도</th>
+							<th>거래 월/일</th>
+							<th>크기</th>
+							<th>층 수</th>
+							<th>지번</th>
+							<th>임대료</th>
+							<th>거래액</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<c:forEach var="house" items="${ houses }">
+							<tr>
+								<td>${ house.no }</td>
+								<td>${ house.dong }</td>
+								<td>${ house.aptName }</td>
+								<td>${ house.buildYear }</td>
+								<td>${ house.dealMonth } / ${ house.dealDay }</td>
+								<td>${ house.area }</td>
+								<td>${ house.floor }</td>
+								<td>${ house.jibun }</td>
+								<td>${ house.rentMoney }</td>
+								<td>${ house.dealAmount }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<script type="text/javascript">
 			function setImg() {
