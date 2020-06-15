@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/gueset.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mappers/user.xml -->
+<mapper namespace="com.happyhouse.repository.HouseRepository"> <!-- mybatis는 namespace필수!! -->
+
+	<!-- 검색 -->
+	<select id="selectAll" resultType="HouseDeal">
+		select * from housedeal 
+		where type in
+		<foreach collection="searchNum" item="arr" open="(" close=")" separator=",">
+			<if test="arr != -1">#{arr}</if>
+		</foreach>
+		<if test="dong != null">
+			and dong like concat('%', #{dong}, '%')
+		</if>
+		<if test="aptname != null">
+			and AptName like concat('%', #{aptname}, '%')
+		</if>
+		<if test="dong == null and aptname == null">
+			and dong like concat('%', #{dealtype}, '%')
+			or AptName like concat('%', #{dealtype}, '%')
+		</if>
+		limit #{start}, #{interval}
+	</select>
+</mapper>

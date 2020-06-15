@@ -21,4 +21,9 @@ public class HomeController {
 	public String moveDust() {
 		return "dust/index";
 	}
+	
+	@GetMapping("move/house")
+	public String moveHouse() {
+		return "house/index";
+	}
 }

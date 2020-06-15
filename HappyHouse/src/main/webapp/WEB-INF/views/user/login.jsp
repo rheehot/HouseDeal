@@ -6,7 +6,7 @@
 <html>
 <head>
 <%@ include file="../setting.jsp"%>
-<link rel='stylesheet' type='text/css' href='${root}/css/login.css' /> <!-- css/login.css -->
+<link rel='stylesheet' type='text/css' href='${root}/css/login.css' />
 <title>Log In</title>
 <script type="text/javascript">
 	function login() {

@@ -22,7 +22,7 @@
 					<li class="nav-item"><a class="nav-link" href="${root}/user/joinpage">회원가입</a></li>
 				</c:if>
 				<c:if test="${ userinfo != null }">
-					<li class="nav-item"><a class="nav-link" href="contact.html">HouseInfo</a></li>
+					<li class="nav-item"><a class="nav-link" href="${root}/move/house">HouseInfo</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact.html">대기환경 정보</a></li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"
