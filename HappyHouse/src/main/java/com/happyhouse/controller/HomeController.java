@@ -19,6 +19,7 @@ public class HomeController {
 	
 	@GetMapping("move/dust")
 	public String moveDust() {
+		System.out.println("HomeController >> move/dust API 호출");
 		return "dust/index";
 	}
 	

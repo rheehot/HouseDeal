@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.happyhouse.repository.SearchRepository"> <!-- mybatis는 namespace필수!! -->
+
+	<select id="selectCount" resultType="int">
+		SELECT count(*) as hitCnt
+		FROM search_list
+		WHERE dong = #{dong} AND apt_name = #{aptName};
+	</select>
+	
+	<insert id="insertSearch">
+		INSERT INTO search_list(dong, apt_name)
+		VALUE(#{dong}, #{aptName});
+	</insert>
+	
+	<update id="updateSearch">
+		UPDATE search_list
+		SET
+		   hit_cnt = IFNULL(hit_cnt, 0) + 1
+		WHERE
+		   dong = #{dong} and apt_name = #{aptName};
+	</update>
+	
+	<select id="selectAllSearch" resultType="Search">
+		SELECT
+			id,
+		    dong,
+		    apt_name as aptName,
+		    hit_cnt as hitCnt
+		FROM search_list
+		ORDER BY hit_cnt DESC
+		LIMIT 10;
+	</select>
+</mapper>

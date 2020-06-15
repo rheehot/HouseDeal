@@ -52,4 +52,9 @@ public class FavoriteController {
 		
 		return "success";
 	}
+	
+	@GetMapping("gugun/fav/{userNo}")
+	public @ResponseBody String getFavGuName(@PathVariable int userNo) {
+		return service.findFavGuName(userNo);
+	}
 }

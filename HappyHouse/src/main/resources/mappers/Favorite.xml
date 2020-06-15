@@ -34,4 +34,10 @@
 		where user_no = #{userNo}
 	</update>
 	
+	<select id="selectFavGuName" resultType="String">
+		SELECT gugun_name
+		FROM fav_location, guguncode
+		WHERE fav_location.user_no = #{userNo}
+		and fav_location.code = guguncode.gugun_code;
+	</select>
 </mapper>

@@ -12,7 +12,7 @@ $(document).ready(function(){
 	
 });
 function showMain(){
-	console.log("test");
+	$('#search_house_in_googlemap').show(1000);
 }
 </script>
 </head>
@@ -86,7 +86,7 @@ function showMain(){
 				최선을 다하겠습니다.</p>
 			</div>
 			<div class="col-lg-6">
-				<img class="img-fluid rounded" src="images/attention.png" alt="">
+				<img class="img-fluid rounded" src="${root}/images/attention.png" alt="">
 			</div>
 		</div>
 		<!-- /.row -->
@@ -102,8 +102,13 @@ function showMain(){
 				<a class="btn btn-lg btn-secondary btn-block" onClick="showMain()">Call to Action</a>
 			</div>
 		</div>
-
-		<%-- <%@ include file="dust/index.jsp"%> --%>
+		
+		<hr>
+		
+		<!-- GoogleMap SelectBox -->
+		<div id="search_house_in_googlemap" style="display: none;">
+			<%@ include file="util/googleMap.jsp"%>
+		</div>
 	</div>
 	<!-- /.container -->
 

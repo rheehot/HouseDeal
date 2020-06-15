@@ -16,4 +16,6 @@ public interface FavoriteRepository {
 	int insert(String code, int userNo);
 	
 	int update(String code, int userNo);
+	
+	String selectFavGuName(int userNo);
 }

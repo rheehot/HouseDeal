@@ -74,14 +74,11 @@ function submit(){
 
         <!-- Search Widget -->
         <div class="card mb-4">
-          <h5 class="card-header">Search</h5>
+          <h5 class="card-header">인기 검색 목록 Top10!</h5>
           <div class="card-body">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
-            </div>
+          	<div class="input-group">
+    			<%@ include file="../util/searchList.jsp"%>
+  		 	</div>    
           </div>
         </div>
       </div>

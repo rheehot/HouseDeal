@@ -40,5 +40,10 @@ public class FavoriteServiceImpl implements FavoriteService {
 	public int modify(String code, int userNo) {
 		return repo.update(code, userNo);
 	}
+	
+	@Override
+	public String findFavGuName(int userNo) {
+		return repo.selectFavGuName(userNo);
+	}
 
 }

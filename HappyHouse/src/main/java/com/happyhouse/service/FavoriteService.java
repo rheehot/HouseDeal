@@ -16,4 +16,6 @@ public interface FavoriteService {
 	int setFavoriteLocation(String code, int userNo);
 	
 	int modify(String code, int userNo);
+	
+	String findFavGuName(int userNo);
 }

@@ -22,6 +22,10 @@ public class HouseInfo implements Serializable, Comparable<HouseInfo> {
 	/** 이미지 경로 */
 	protected String img;
 
+	public HouseInfo() {
+		
+	}
+	
 	public HouseInfo(int no) {
 		this.no = no;
 	}
