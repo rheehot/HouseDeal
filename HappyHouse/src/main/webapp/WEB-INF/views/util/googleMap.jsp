@@ -216,7 +216,7 @@
 				
 			},
 		});
-		// location.href = "${root}/house/searchapt/"+aptName;
+		location.href = "${root}/house/detail/"+ $("#dong").val() + "/" + aptName;
 	}
 	</script>
 </div>

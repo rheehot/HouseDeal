@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.happyhouse.domain.HouseDeal;
+import com.happyhouse.domain.HouseDetail;
 import com.happyhouse.domain.HouseInfo;
 import com.happyhouse.domain.HousePageBean;
 import com.happyhouse.repository.HouseRepository;
@@ -16,10 +17,14 @@ public class HouseServiceImpl implements HouseService {
 
 	@Autowired
 	HouseRepository repo;
-	
+
 	@Override
 	public List<HouseDeal> searchAll(HousePageBean bean) {
-		return repo.selectAll(bean);
+		List<HouseDeal> list = repo.selectAll(bean);
+		for (HouseDeal houseDeal : list) {
+			System.out.println(houseDeal);
+		}
+		return list;
 	}
 
 	@Override
@@ -43,6 +48,16 @@ public class HouseServiceImpl implements HouseService {
 	@Override
 	public HouseInfo detail(int no) {
 		return repo.select(no);
+	}
+
+	@Override
+	public List<HouseDetail> findHouseDetailByNo(int no) {
+		return repo.selectHouseDetailByNo(no);
+	}
+
+	@Override
+	public List<HouseDetail> findHouseDetailByDongAptName(HouseDetail houseDetail) {
+		return repo.selectHouseDetailByDongAptName(houseDetail);
 	}
 
 }

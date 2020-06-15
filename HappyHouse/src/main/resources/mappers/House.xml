@@ -6,51 +6,93 @@
 <!-- mappers/user.xml -->
 <mapper namespace="com.happyhouse.repository.HouseRepository"> <!-- mybatis는 namespace필수!! -->
 
-	<!-- 검색 -->
-	<select id="selectAll" resultType="HouseDeal">
-		select aptname, no, dong, code, buildyear, jibun
-		from housedeal 
-		where type in
-		<foreach collection="searchNum" item="arr" open="(" close=")" separator=",">
-			<if test="arr != -1">#{arr}</if>
-		</foreach>
-		<if test="dong != null">
-			and dong like concat('%', #{dong}, '%')
-		</if>
-		<if test="aptname != null">
-			and AptName like concat('%', #{aptname}, '%')
-		</if>
-		<if test="dong == null and aptname == null">
-			and dong like concat('%', #{dealtype}, '%')
-			or AptName like concat('%', #{dealtype}, '%')
-		</if>
-		group by aptname
-		limit #{start}, #{interval}
-	</select>
-	
-	<select id="select" resultType="HouseInfo">
-		select no, dong, aptName, code, buildYear, jibun, lat, lng, img
-		from houseinfo
-		where no=#{no}
-	</select>
-	
-	
-	<select id="getTotalCount" resultType="Integer">
-		select count(distinct aptname)
-		from housedeal
-		where type in
-		<foreach collection="searchNum" item="arr" open="(" close=")" separator=",">
-			<if test="arr != -1">#{arr}</if>
-		</foreach>
-		<if test="dong != null">
-			and dong like concat('%', #{dong}, '%')
-		</if>
-		<if test="aptname != null">
-			and AptName like concat('%', #{aptname}, '%')
-		</if>
-		<if test="dong == null and aptname == null">
-			and dong like concat('%', #{dealtype}, '%')
-			or AptName like concat('%', #{dealtype}, '%')
-		</if>
-  	 </select>
+   <!-- 검색 -->
+   <select id="selectAll" resultType="HouseDeal">
+      select aptname, no, dong, code, buildyear, jibun
+      from housedeal 
+      where type in
+      <foreach collection="searchNum" item="arr" open="(" close=")" separator=",">
+         <if test="arr != -1">#{arr}</if>
+      </foreach>
+      <if test="dong != null">
+         and dong like concat('%', #{dong}, '%')
+      </if>
+      <if test="aptname != null">
+         and AptName like concat('%', #{aptname}, '%')
+      </if>
+      <if test="dong == null and aptname == null">
+         and dong like concat('%', #{dealtype}, '%')
+         or AptName like concat('%', #{dealtype}, '%')
+      </if>
+      group by aptname
+      order by no
+      limit #{start}, #{interval}
+   </select>
+   
+   <select id="select" resultType="HouseInfo">
+      select no, dong, aptName, code, buildYear, jibun, lat, lng, img
+      from houseinfo
+      where no=#{no}
+   </select>
+   
+   
+   <select id="getTotalCount" resultType="Integer">
+      select count(distinct aptname)
+      from housedeal
+      where type in
+      <foreach collection="searchNum" item="arr" open="(" close=")" separator=",">
+         <if test="arr != -1">#{arr}</if>
+      </foreach>
+      <if test="dong != null">
+         and dong like concat('%', #{dong}, '%')
+      </if>
+      <if test="aptname != null">
+         and AptName like concat('%', #{aptname}, '%')
+      </if>
+      <if test="dong == null and aptname == null">
+         and dong like concat('%', #{dealtype}, '%')
+         or AptName like concat('%', #{dealtype}, '%')
+      </if>
+    </select>
+    
+    <select id="selectHouseDetailByNo" resultType="HouseDetail">
+    	SELECT
+			houseinfo.no,
+		    houseinfo.dong,
+		    houseinfo.AptName as aptName,
+		    dealAmount,
+		    houseinfo.buildYear,
+		    dealMonth,
+		    dealDay,
+		    area,
+		    floor,
+		    houseinfo.jibun,
+		    rentMoney,
+		    lat,
+		    lng
+		FROM housedeal, houseinfo
+		WHERE housedeal.aptname like houseinfo.aptname
+		AND houseinfo.no = #{no}
+    </select>
+    
+    <select id="selectHouseDetailByDongAptName" resultType="HouseDetail">
+    SELECT
+		houseinfo.no,
+	    houseinfo.dong,
+	    houseinfo.AptName as aptName,
+	    dealAmount,
+	    houseinfo.buildYear,
+	    dealMonth,
+	    dealDay,
+	    area,
+	    floor,
+	    houseinfo.jibun,
+	    rentMoney,
+	    lat,
+	    lng
+	FROM housedeal, houseinfo
+	WHERE housedeal.aptname like houseinfo.aptname
+	AND houseinfo.aptname = #{aptName}
+	AND houseinfo.dong = #{dong}
+    </select>
 </mapper>

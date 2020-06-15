@@ -84,7 +84,7 @@ public class PageNavigation {
 		int startPage = (currentPage - 1) / naviSize * naviSize + 1;
 		int endPage = startPage + naviSize - 1;
 		if(totalPageCount < endPage)
-			endPage = totalPageCount;
+			endPage = totalPageCount-1;
 		
 		StringBuilder buffer = new StringBuilder();
 		buffer.append("		<ul class=\"pagination\"> \n");
@@ -107,4 +107,11 @@ public class PageNavigation {
 		this.navigator = buffer.toString();
 	}
 
+	@Override
+	public String toString() {
+		return "PageNavigation [startRange=" + startRange + ", endRange=" + endRange + ", totalCount=" + totalCount
+				+ ", newCount=" + newCount + ", totalPageCount=" + totalPageCount + ", currentPage=" + currentPage
+				+ ", naviSize=" + naviSize + ", countPerPage=" + countPerPage + ", navigator=" + navigator + "]";
+	}
+	
 }

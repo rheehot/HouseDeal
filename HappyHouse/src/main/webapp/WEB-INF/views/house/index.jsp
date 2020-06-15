@@ -12,14 +12,13 @@
 
 // 네이게이션 출력 x
 // 검색 할때 엔터치면 검색 안됨
-
+	$(document).ready(function(){
+		validationCheck(1);
+	});
 	function pageMove(pg) {
-		$('#pg').val(pg);
-		document.getElementById("pageform").action = "${root}/user/userlist/" + pg;
-		document.getElementById("pageform").submit();
+		validationCheck(pg+1);
 	}
-
-	function validationCheck() {
+	function validationCheck(pg) {
 		var values = document.getElementsByName("deal");
 		var flag = false;
 		for (var i = 0; i < values.length; i++) {
@@ -34,27 +33,25 @@
 			list = [];
 			values = document.getElementsByName("deal");
 		
-			console.log(list);
 			for(var i = 0; i < values.length; i++) {
 				if(values[i].checked) {
 					list.push(values[i].value);
 				}
 			}
-			console.log(list);
 			
 			$.ajax({
-				method: 'POST',
+				method: 'GET',
 				url: '${root}/house/list',
 				traditional: true,
 				data: {
-					currentPage: 1,
+					currentPage: pg,
 					'deal': list,
 					key: $('#dealoption option:selected').val(),
-					word: $('#searchform input[name=word]').val()
+					word: $('#search_name').val()
 				},
 				success: function(data) {
 					var htmlTxt = '<table><thead><tr><th>번호</th><th>아파트명</th><th>동</th><th>코드</th><th>건축년도</th><th>지번</th></tr></thead><tbody>';
-					$.each(data, function(index, value) {
+					$.each(data.list, function(index, value) {
 						htmlTxt += 	'<tr><td><strong>' + value.no + '</strong></td>' +
 									'<td><a href="${root}/house/detail/' + value.no + '">' + value.aptName + '</a></td>' +
 									'<td>' + value.dong + '</td>' +
@@ -66,6 +63,9 @@
 					$('#list').html(htmlTxt);
 					$('#list').show();
 					$('#navi').show();
+					$('#navi2').empty();
+					$('#navi2').append(data.pageNavigation.navigator);
+					
 				}
 			});
 		}
@@ -77,8 +77,8 @@
 
 	<div class="container" style="margin-top: 2%;">
 		<div style="margin-left: 40%">
-			<form id="searchform">
 				<input type="hidden" name="act" id="act" value="${root}/house/list">
+				<input type="hidden" name="currentPage" id="pg" value="3">
 				<div>
 					<input type="checkbox" name="deal" value="1" checked="checked" />아파트 매매
 					<input type="checkbox" name="deal" value="2" checked="checked" />아파트 전월세
@@ -91,10 +91,8 @@
 						<option value="dong">동</option>
 						<option value="apt">아파트</option>
 					</select>
-					<input type="text" name="word" value="" onkeydown="javascript:if(event.keyCode == 13) {validationCheck();}">
-					<button type="button" class="btn btn-primary" onclick="validationCheck();">검색</button>
+					<input type="text" name="word" value="" id="search_name">
 				</div>
-			</form>
 		</div>
 	</div>
 	
@@ -103,13 +101,19 @@
 	<div class="center-block" id="navi" align="center" style="display: none;" >
 		<table>
 			<tr>
-				<td>
+				<td id="navi2">
 					<!-- page 출력부분 -->
-					${navigation.getNavigator}
 				</td>
 			</tr>
 		</table>
 	</div>
+	<script type="text/javascript">
+	$("#search_name").keypress(function(e) {
+		if (e.which == 13) {
+			validationCheck(1);
+		}
+	});
+	</script>
 	
 	<%@ include file="/WEB-INF/views/modal.jsp"%>
 	<%@ include file="/WEB-INF/views/footer.jsp"%>
