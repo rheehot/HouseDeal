@@ -16,7 +16,7 @@
 	<div class="container">		
 		
 		<div class="username_div">
-			<h2 style="text-align: center;">선택하신 상세 정보입니다.</h2>
+			<h2 style="text-align: center; margin-top: 20px;">선택하신 상세 정보입니다.</h2>
 			<hr>
 			
 			<div id="map" style="width: 90%; height: 500px; margin: auto;"></div>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <%@ include file="../setting.jsp"%>
-<link rel='stylesheet' type='text/css' href='${root}/css/login.css' />
+<link rel='stylesheet' type='text/css' href='${root}/css/houselist.css' />
 <!-- css/login.css -->
 <title>Log In</title>
 <script type="text/javascript">
@@ -37,7 +37,7 @@ function moveJoin() {
 	<div class="container">
 		<div style="margin-top: 100px;">
 			<c:if test="${ userinfo == null }">
-				<h3 style="color: white;">로그인이 필요한 페이지 입니다.</h3>
+				<h3">로그인이 필요한 페이지 입니다.</h3>
 				<div class="login-box">
 					<h2>LogIn</h2>
 					<form id="loginform" method="post" action="">
@@ -60,7 +60,7 @@ function moveJoin() {
 			</c:if>
 			<c:if test="${ userinfo != null }">
 				<!-- Page Heading/Breadcrumbs -->
-				<h1 class="mt-4 mb-3" style="color: white;">Happy House 자유 게시판
+				<h1 class="mt-4 mb-3"">Happy House 자유 게시판
 				</h1>
 
 				<ol class="breadcrumb">
@@ -71,7 +71,7 @@ function moveJoin() {
 
 				<div align="right">
 					<button onclick="location.href='${root}/move/qnainsert'"
-						class="btn btn-primary">게시글 작성하기</button>
+						class="btn btn-secondary">게시글 작성하기</button>
 				</div>
 				<br>
 				<!-- Blog Post -->
@@ -88,7 +88,7 @@ function moveJoin() {
 									<h3 class="card-title">#${ qna.qnaTitle }</h3>
 									<p class="card-text">${ qna.qnaContent }</p>
 									<a href="${ root }/api/qna/${ qna.qnaNo }"
-										class="btn btn-primary">Read More &rarr;</a>
+										class="btn btn-secondary">Read More &rarr;</a>
 								</div>
 							</div>
 						</div>

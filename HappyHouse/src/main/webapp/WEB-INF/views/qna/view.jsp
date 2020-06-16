@@ -6,17 +6,14 @@
 <html>
 <head>
 <%@ include file="../setting.jsp"%>
-<link rel='stylesheet' type='text/css' href='${root}/css/login.css' /> <!-- css/login.css -->
+<link rel='stylesheet' type='text/css' href='${root}/css/houselist.css' />
 <title>Log In</title>
 <script type="text/javascript">
 	
 </script>
 <style type="text/css">
-p{
-	color: white;
-}
 hr{
-	border: solid 1px white;
+	border: solid 1px;
 }
 </style>
 <script type="text/javascript">
@@ -30,11 +27,11 @@ $(document).ready(function(){
 			$.each(data, function(idx, vo){
 				let tempStr = "<div class='media mb-4'>";
 	          		tempStr += "<div class='media-body'>";
-	          		tempStr +=  "<h5 class='mt-0' style='color: white;'>"+vo.name+"(" + vo.id +")</h5>";
+	          		tempStr +=  "<h5 class='mt-0'>"+vo.name+"(" + vo.id +")</h5>";
 	            	tempStr +="<p id='reply_update_"+vo.replyNo+"'>"+ vo.replyContent+"</p>"
 	            	if(check(${userinfo.userNo}, vo.replyQnaUserNo)){
-		            	tempStr += "<button onclick='updateReply("+vo.replyNo+")' class='btn btn-primary'>댓글 수정하기</button> ";
-		            	tempStr += "<button onclick='removeReply("+vo.replyNo+")' class='btn btn-primary'>댓글 삭제하기</button>";
+		            	tempStr += "<button onclick='updateReply("+vo.replyNo+")' class='btn btn-secondary'>댓글 수정하기</button> ";
+		            	tempStr += "<button onclick='removeReply("+vo.replyNo+")' class='btn btn-secondary'>댓글 삭제하기</button>";
 	            	}
 					tempStr += "</div></div><hr>";
 					$('#div_reply').append(tempStr);
@@ -70,7 +67,7 @@ function removeReply(no){
 function updateReply(no){
 	$('#reply_update_'+no).text('');
 	$('#reply_update_'+no).append('<textarea type="text" id="reply_input" style="width: 100%"></textarea>');
-	$('#reply_update_'+no).append('<button class="btn btn-primary" onclick="update('+no+')">확인</button>');
+	$('#reply_update_'+no).append('<button class="btn btn-secondary" onclick="update('+no+')">확인</button>');
 }
 function updateForm(){
 	let titleTag = '<input type="text" id="qna_title_input" value='+tempTitle+' style="width: 100%"></input>';
@@ -80,7 +77,7 @@ function updateForm(){
 	$('#qna_title').append(titleTag);
 	$('#qna_content').append(contentTag);
 	$('#qna_content_input').val(tempContent);
-	$('#qna_content').append('<button class="btn btn-primary" onclick="updatePost()">수정 완료 하기</button>');
+	$('#qna_content').append('<button class="btn btn-secondary" onclick="updatePost()">수정 완료 하기</button>');
 }
 function updatePost(){
 	$.ajax({
@@ -173,8 +170,8 @@ function insertReply(userNo){
         <!-- Preview Image -->
 		<div style="float: right;">
 			<c:if test="${ qna.qnaUserNo == userinfo.userNo }">
-				<button onclick="updateForm()" class="btn btn-primary">수정하기</button>
-				<button onclick="removePost()" class="btn btn-primary">삭제하기</button>
+				<button onclick="updateForm()" class="btn btn-secondary">수정하기</button>
+				<button onclick="removePost()" class="btn btn-secondary">삭제하기</button>
 			</c:if>
 		</div>
 		<br>
@@ -206,7 +203,7 @@ function insertReply(userNo){
               <div class="form-group">
                 <textarea id="reply_write" class="form-control" rows="3"></textarea>
               </div>
-              <button onclick="insertReply();" class="btn btn-primary">Submit</button>
+              <button onclick="insertReply();" class="btn btn-secondary">Submit</button>
           </div>
         </div>
 

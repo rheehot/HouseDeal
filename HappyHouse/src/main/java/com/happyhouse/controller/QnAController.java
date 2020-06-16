@@ -30,12 +30,14 @@ public class QnAController {
 
 	@GetMapping("/qna")
 	public ModelAndView getQnAs(HttpServletRequest request) {
+		System.out.println("in1");
 		ModelAndView mav = new ModelAndView();
 		List<QnA> list  = null;
 		try {
 			String key = request.getParameter("key");
 			String word = request.getParameter("word");
 			list = service.findAll(key, word);
+			System.out.println("in2");
 			for(QnA qna : list) {
 				QnA getQnA = null;
 				if((getQnA = service.getReplyCount(qna.getQnaNo())) != null) 
@@ -46,6 +48,7 @@ public class QnAController {
 			mav.setViewName("qna/list");
 			mav.addObject("qnas", list);
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			mav.addObject("msg", "질문 정보를 가져오는 도중 에러가 발생했습니다.");
 			mav.setViewName("index");
 		}
