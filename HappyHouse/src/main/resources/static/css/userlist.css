@@ -6,8 +6,7 @@ body {
 }
 
 footer {
-	position: absolute;
-	top: 100%;
+	position: relative;
 	width: 100%;
 }
 

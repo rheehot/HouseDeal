@@ -7,6 +7,10 @@ function boardlist() {
 	document.getElementById("pageform").action = "${root}/board/boards";
 	document.getElementById("pageform").submit();
 }
+function shoplist() {
+	document.getElementById("pageform").action = "${root}/shop/list";
+	document.getElementById("pageform").submit();
+}
 </script>
 <form name="pageform" id="pageform" method="GET" action="">
 	<input type="hidden" name="pg" id="pg" value="1">
@@ -32,6 +36,7 @@ function boardlist() {
 					<li class="nav-item"><a class="nav-link" href="${root}/user/joinpage">회원가입</a></li>
 				</c:if>
 				<c:if test="${ userinfo != null }">
+					<li class="nav-item"><a class="nav-link" href="javascript:shoplist();">상권 정보</a></li>
 					<li class="nav-item"><a class="nav-link" href="${root}/api/qna">QnA</a></li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"

@@ -13,10 +13,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+  </style>
 </head>
 <body>
 <%@ include file="../header.jsp"%>
-<div class="container">
+<div class="container" style="min-height: 580px;">
   <div class="jumbotron">
     <h1>처리중 에러가 발생했습니다.</h1>      
     <p>${ msg }</p>
