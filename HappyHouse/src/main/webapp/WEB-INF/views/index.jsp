@@ -114,6 +114,7 @@ function showMain(){
 		<div id="search_house_in_googlemap" style="display: none;">
 			<%@ include file="util/googleMap.jsp"%>
 		</div>
+		<%@ include file="dust/index.jsp"%>
 	</div>
 	<!-- /.container -->
 

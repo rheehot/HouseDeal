@@ -13,12 +13,18 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		List<String> list = new ArrayList<>();
-		list.add("/api/**");
+		// QnA 관련
+		list.add("/api/qna");
+		
+		// User 정보 관련
 		list.add("/user/updatepage");
 		list.add("/user/update");
 		list.add("/userlist/**");
 		list.add("/userinfo/**");
 		list.add("/delete/**");
+
+		// QnA 관련
+		// list.add("/api/qna");
 		
 		registry.addInterceptor(new PermissionIntercepter()).addPathPatterns(list);
 	}

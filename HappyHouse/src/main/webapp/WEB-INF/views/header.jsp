@@ -25,16 +25,14 @@ function boardlist() {
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="nav-link" href="${root}/move/dust">실시간 미세먼지 정보(temp)</a></li>
 				<li class="nav-item"><a class="nav-link" href="javascript:boardlist();">공지사항</a></li>
-				<li class="nav-item"><a class="nav-link" href="${root}/api/qna">QnA</a></li>
 				<c:if test="${ userinfo == null }">
 					<li class="nav-item"><a class="nav-link" href="${root}/user/loginpage">로그인</a></li>
 					<li class="nav-item"><a class="nav-link" href="${root}/user/joinpage">회원가입</a></li>
 				</c:if>
 				<c:if test="${ userinfo != null }">
+					<li class="nav-item"><a class="nav-link" href="${root}/api/qna">QnA</a></li>
 					<li class="nav-item"><a class="nav-link" href="${root}/move/house">HouseInfo</a></li>
-					<li class="nav-item"><a class="nav-link" href="contact.html">대기환경 정보</a></li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

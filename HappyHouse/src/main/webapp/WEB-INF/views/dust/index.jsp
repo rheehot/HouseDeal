@@ -2,10 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${ pageContext.request.contextPath }" />
-<!DOCTYPE html>
-<html>
-<head>
-<%@ include file="../setting.jsp"%>
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css" />
 
@@ -13,34 +10,31 @@
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
 
-</head>
-<body>
-	<%@ include file="../header.jsp"%>
-	<div class="container">
-		<br>
-		<div style='float: left;'>
-			<h5>
-				<input type="checkbox" name="fav_location" onclick='boxChecked(this);'> 관심지역 미세먼지 확인하기
-			</h5>
-		</div>
-		<div style='float: right;'>
-			<h5>
-				<input id="search_name" placeholder="지역구"></input>
-			</h5>
-		</div>
-		<br>
-		<div id="linechart"></div>
-		<br>
-		<div style="text-align: center;">
-			<div style="float: left; width: 50%">
-				<img alt="미세먼지 수치" src="${root}/images/pm10dust.png" width="80%" />
-			</div>
-			<div style="float: right; width: 50%">
-				<img alt="초 미세먼지 수치" src="${root}/images/pm25dust.png" width="80%" />
-			</div>
-		</div>
-		<br> <br> <br>
+<div class="container">
+	<br>
+	<div style='float: left;'>
+		<h5>
+			<input type="checkbox" name="fav_location" onclick='boxChecked(this);'> 관심지역 미세먼지 확인하기
+		</h5>
 	</div>
+	<div style='float: right;'>
+		<h5>
+			<input id="search_name" placeholder="지역구"></input>
+		</h5>
+	</div>
+	<br>
+	<div id="linechart"></div>
+	<br>
+	<div style="text-align: center;">
+		<div style="float: left; width: 50%">
+			<img alt="미세먼지 수치" src="${root}/images/pm10dust.png" width="80%" />
+		</div>
+		<div style="float: right; width: 50%">
+			<img alt="초 미세먼지 수치" src="${root}/images/pm25dust.png" width="80%" />
+		</div>
+	</div>
+	<br> <br> <br>
+	
 	<script type="text/javascript">
 		var datas = [];
 		$.ajax({
@@ -124,5 +118,4 @@
 			}
 		}
 	</script>
-</body>
-</html>
+</div>
