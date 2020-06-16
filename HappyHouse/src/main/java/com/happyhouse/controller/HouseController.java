@@ -56,7 +56,7 @@ public class HouseController {
 		bean.setInterval(10);
 
 		List<HouseDeal> list = service.searchAll(bean);
-		PageNavigation pageNavigation = service.makePageNavigation(currentPage - 1, 10, bean);
+		PageNavigation pageNavigation = service.makePageNavigation(currentPage, 10, bean);
 
 		Response response = new Response(list, pageNavigation);
 		return response;

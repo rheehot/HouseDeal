@@ -6,7 +6,7 @@
 <html>
 <head>
 <%@ include file="../setting.jsp"%>
-<link rel='stylesheet' type='text/css' href='${root}/css/login.css' /> <!-- css/login.css -->
+<link rel='stylesheet' type='text/css' href='${root}/css/houselist.css' /> <!-- css/login.css -->
 <title>Log In</title>
 <script type="text/javascript">
 function submit(){
@@ -36,8 +36,7 @@ function submit(){
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-	<h1>Happy House 게시글 작성하기</h1>
-    <h1 class="mt-4 mb-3" style="color: white;">Happy House 게시글 작성하기
+    <h1 class="mt-4 mb-3">Happy House 게시글 작성하기
     </h1>
 
     <div class="row">
@@ -58,7 +57,7 @@ function submit(){
 						<p class="card-text">내용</p>
 						<textarea type="text" id="qnaContent" name="qnaContent"
 							style="width: 100%;"></textarea>
-						<br> <a onclick="submit();" class="btn btn-primary">글
+						<br> <a onclick="submit();" class="btn btn-secondary">글
 							작성하기 &rarr;</a>
 					</div>
 					<div class="card-footer text-muted">

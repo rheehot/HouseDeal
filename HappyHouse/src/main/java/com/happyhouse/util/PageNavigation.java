@@ -84,8 +84,7 @@ public class PageNavigation {
 		int startPage = (currentPage - 1) / naviSize * naviSize + 1;
 		int endPage = startPage + naviSize - 1;
 		if(totalPageCount < endPage)
-			endPage = totalPageCount-1;
-		
+			endPage = totalPageCount;
 		StringBuilder buffer = new StringBuilder();
 		buffer.append("		<ul class=\"pagination\"> \n");
 		buffer.append("			<li class=\"page-item\"> \n");
