@@ -69,7 +69,9 @@
 						location.href = '${root}';
 					});
 				}else if(data == 'fail'){
-					alert("이미 가입되어있는 아이디 입니다.");
+					$('#modaltext2').text('동일한 ID가 존재합니다.');
+					$('#modaltitle2').text('Fail To SignUp');
+					$('#myModal2').modal('show');
 				}else{
 					alert('회원 가입 도중 에러가 발생했습니다.');
 				}

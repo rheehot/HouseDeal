@@ -66,10 +66,11 @@ public class UserController {
 		System.out.println("가입 정보 >> " + user);
 		String result = "";
 		try {
+			User us = service.detail(user.getId());
+			System.out.println(us);
+			if(us != null) return "fail";
 			if (service.signUp(user) == 1)
 				result = "success";
-			else
-				result = "fail";
 		}catch(Exception e) {
 			result = "server_error";
 		}
