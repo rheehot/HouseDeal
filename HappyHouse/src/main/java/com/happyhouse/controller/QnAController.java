@@ -1,6 +1,5 @@
 package com.happyhouse.controller;
 
-import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,7 +48,7 @@ public class QnAController {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			mav.addObject("msg", "질문 정보를 가져오는 도중 에러가 발생했습니다.");
-			mav.setViewName("index");
+			mav.setViewName("error/error");
 		}
 		return mav;
 	}
@@ -60,15 +58,16 @@ public class QnAController {
 		ModelAndView mav = new ModelAndView();
 		try {
 			int result = service.regitry(mFile, qna);
-			mav.setViewName("qna/list");
 			if(result >= 1) {
+				mav.setViewName("qna/list");
 				mav.addObject("msg", "정상적으로 등록 되었습니다.");
 			}else {
+				mav.setViewName("error/error");
 				mav.addObject("msg", "등록 중 오류가 발생했습니다.");
 			}
 		}catch(Exception e) {
 			mav.addObject("msg", "등록 중 오류가 발생했습니다.");
-			mav.setViewName("qna/registry"); 
+			mav.setViewName("error/error"); 
 		}
 		return mav;
 	}
@@ -84,6 +83,7 @@ public class QnAController {
 			mav.addObject("qna", qna);
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
+			mav.setViewName("error/error");
 			mav.addObject("msg", "게시글 가져오는 중 오류가 발생했습니다.");
 		}
 		return mav;
@@ -95,7 +95,7 @@ public class QnAController {
 		try {
 			list = service.selectReply(qnaNo);
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 		return list;
 	}
