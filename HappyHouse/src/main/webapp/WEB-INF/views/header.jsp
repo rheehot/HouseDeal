@@ -26,13 +26,13 @@ function boardlist() {
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link" href="javascript:boardlist();">공지사항</a></li>
+				<li class="nav-item"><a class="nav-link" href="${root}/move/house">HouseInfo</a></li>
 				<c:if test="${ userinfo == null }">
 					<li class="nav-item"><a class="nav-link" href="${root}/user/loginpage">로그인</a></li>
 					<li class="nav-item"><a class="nav-link" href="${root}/user/joinpage">회원가입</a></li>
 				</c:if>
 				<c:if test="${ userinfo != null }">
 					<li class="nav-item"><a class="nav-link" href="${root}/api/qna">QnA</a></li>
-					<li class="nav-item"><a class="nav-link" href="${root}/move/house">HouseInfo</a></li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

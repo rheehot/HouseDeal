@@ -95,4 +95,24 @@
 	AND houseinfo.aptname = #{aptName}
 	AND houseinfo.dong = #{dong}
     </select>
+    
+        <select id="selectHouseDetailByDong" resultType="HouseDetail">
+	    SELECT
+			houseinfo.no,
+		    houseinfo.dong,
+		    houseinfo.AptName as aptName,
+		    dealAmount,
+		    houseinfo.buildYear,
+		    dealMonth,
+		    dealDay,
+		    area,
+		    floor,
+		    houseinfo.jibun,
+		    rentMoney,
+		    lat,
+		    lng
+		FROM housedeal, houseinfo
+		WHERE housedeal.aptname like houseinfo.aptname
+		AND houseinfo.dong = #{dong}
+    </select>
 </mapper>

@@ -18,4 +18,6 @@ public interface HouseService {
 	List<HouseDetail> findHouseDetailByNo(int no);
 
 	List<HouseDetail> findHouseDetailByDongAptName(HouseDetail houseDetail);
+	
+	List<HouseDetail> findHouseDetailByDong(HouseDetail houseDetail);
 }

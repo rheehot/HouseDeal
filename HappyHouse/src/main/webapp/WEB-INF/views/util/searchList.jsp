@@ -16,7 +16,7 @@
 				success:function(data){
 					$.each(data, function(index, vo){
 						let str = '<li class="list-group-item d-flex justify-content-between align-items-center" >'
-							+ '<a href="#" style="font-size: 14px;">' + vo.dong + '</a> <a href="#" style="font-size: 10px;">' + vo.aptName + '</a>'
+							+ '<a href="${root}/house/detail/dong/'+vo.dong+'" style="font-size: 14px;">' + vo.dong + '</a> <a href="${root}/house/detail/'+vo.dong+'/'+vo.aptName+'" style="font-size: 10px;">' + vo.aptName + '</a>'
 							+ '<span class="badge badge-primary badge-pill">' + vo.hitCnt + '</span>';
 						$('#list').append(str);
 					});

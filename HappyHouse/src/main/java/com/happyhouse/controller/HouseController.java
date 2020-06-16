@@ -81,6 +81,16 @@ public class HouseController {
 		mav.addObject("houses", service.findHouseDetailByDongAptName(houseDetail));
 		return mav;
 	}
+	
+	@GetMapping("/detail/dong/{dong}")
+	public ModelAndView getHouseByDong(@PathVariable String dong) {
+		HouseDetail houseDetail = new HouseDetail();
+		houseDetail.setDong(dong);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("house/detail");
+		mav.addObject("houses", service.findHouseDetailByDong(houseDetail));
+		return mav;
+	}
 
 	class Response {
 		private List<HouseDeal> list;

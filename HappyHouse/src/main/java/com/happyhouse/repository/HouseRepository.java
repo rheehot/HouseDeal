@@ -18,4 +18,6 @@ public interface HouseRepository {
 	List<HouseDetail> selectHouseDetailByNo(int no);
 	
 	List<HouseDetail> selectHouseDetailByDongAptName(HouseDetail houseDetail);
+	
+	List<HouseDetail> selectHouseDetailByDong(HouseDetail houseDetail);
 }

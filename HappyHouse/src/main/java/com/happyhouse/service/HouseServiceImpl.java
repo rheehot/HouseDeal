@@ -59,5 +59,9 @@ public class HouseServiceImpl implements HouseService {
 	public List<HouseDetail> findHouseDetailByDongAptName(HouseDetail houseDetail) {
 		return repo.selectHouseDetailByDongAptName(houseDetail);
 	}
-
+	
+	@Override
+	public List<HouseDetail> findHouseDetailByDong(HouseDetail houseDetail) {
+		return repo.selectHouseDetailByDong(houseDetail);
+	}
 }

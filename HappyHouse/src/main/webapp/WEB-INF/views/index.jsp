@@ -72,29 +72,50 @@ function showMain(){
 	</header>
 	<!-- Page Content -->
 	<div class="container">
-
-		<h1 class="my-4">Welcome to Happy House</h1>
-
-		<!-- Features Section -->
+	<h1 class="my-4">Welcome to Happy House</h1>
 		<div class="row">
-			<div class="col-lg-6">
-				<h2>Happy House Features</h2>
-				<p>저희 해피하우스는 다음과 같은 서비스를 제공해드립니다.</p>
-				<ul>
-					<li>구글 맵과 연동한 하우스 정보 제공</li>
-					<li>여러 고객들과 소통할 자유 게시판</li>
-					<li>서울구별 실시간 미세먼지 상황</li>
-					<li>하우스 정보 검색 및 확인</li>
-					<li>----</li>
-				</ul>
-				<p>해피하우스는 여러분들이 필요한 데이터와 정보들을 더 좋은 서비스로 제공해드리기 위해
-				최선을 다하겠습니다.</p>
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+				<form id="form" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="qnaUserNo" value="${userinfo.userNo}"></input>
+				<!-- Blog Post -->
+				<div class="card mb-4">
+					<div class="card-body">
+						<h2>Happy House Features</h2>
+						<p>저희 해피하우스는 다음과 같은 서비스를 제공해드립니다.</p>
+						<ul>
+							<li>구글 맵과 연동한 하우스 정보 제공</li>
+							<li>여러 고객들과 소통할 자유 게시판</li>
+							<li>서울구별 실시간 미세먼지 상황</li>
+							<li>하우스 정보 검색 및 확인</li>
+							<li>----</li>
+						</ul>
+						<p>해피하우스는 여러분들이 필요한 데이터와 정보들을 더 좋은 서비스로 제공해드리기 위해
+						최선을 다하겠습니다.</p>
+						<div class="card-footer text-muted" style="text-align: center;">
+							<img class="img-fluid rounded" src="${root}/images/attention.png" alt="" width="50%;">
+						</div>
+					</div>
+				</div>
+				</form>
 			</div>
-			<div class="col-lg-6">
-				<img class="img-fluid rounded" src="${root}/images/attention.png" alt="">
-			</div>
-		</div>
-		<!-- /.row -->
+
+
+	      <!-- Sidebar Widgets Column -->
+	      <div class="col-md-4">
+	
+	        <!-- Search Widget -->
+	        <div class="card mb-4">
+	          <h5 class="card-header">인기 검색 목록 Top10!</h5>
+	          <div class="card-body">
+	          	<div class="input-group">
+	    			<%@ include file="util/searchList.jsp"%>
+	  		 	</div>    
+	          </div>
+	        </div>
+	      </div>
+	
+	    </div>
 
 		<hr>
 
@@ -115,6 +136,7 @@ function showMain(){
 			<%@ include file="util/googleMap.jsp"%>
 		</div>
 		<%@ include file="dust/index.jsp"%>
+		
 	</div>
 	<!-- /.container -->
 
