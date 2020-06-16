@@ -7,7 +7,7 @@
 <link rel='stylesheet' type='text/css' href='${root}/css/googlemap.css' />
 <div style="margin-top: 50px;">
 	<div class="starter-template">
-		<div class="form-group md" style="float: right;">
+		<div class="form-group md" style="float: right; margin-right: 5%;">
 			<select class="form-control" name="dong" id="dong">
 				<option value="0">선택</option>
 			</select>
@@ -99,7 +99,7 @@
 					$.ajax({
 						url : "${root}/selectbox/dong/" + $("#gugun").val().substring(0, 5),
 						success : function(data, status) {
-							$('#dong').empty();
+							//$('#dong').empty();
 							$.each(data, function(idx, vo){
 								let tempStr = "<option value="+ vo.dong +">" + vo.dong + "</option>";
 								$('#dong').append(tempStr);

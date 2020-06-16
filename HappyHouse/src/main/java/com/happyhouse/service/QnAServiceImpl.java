@@ -76,6 +76,7 @@ public class QnAServiceImpl implements QnAService {
 
 	@Override
 	public int remove(int no) throws Exception {
+		System.out.println(no);
 		return repository.delete(no);
 	}
 

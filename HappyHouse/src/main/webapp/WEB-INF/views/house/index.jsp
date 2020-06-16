@@ -85,8 +85,8 @@
 					<input type="checkbox" name="deal" value="3" checked="checked" />다세대,주택 매매
 					<input type="checkbox" name="deal" value="4" checked="checked" />다세대, 주택 전월세
 				</div>
-				<div style="margin-left: 22%">
-					<select class="form-control" name="dealoption" id="dealoption" tabindex="5" style="width: 90px; float: left; margin-right: 10px;">
+				<div style="margin-left: 32%">
+					<select class="form-control" name="dealoption" id="dealoption" tabindex="5" style="width: 90px; float: left;">
 						<option value="all">--all--</option>
 						<option value="dong">동</option>
 						<option value="apt">아파트</option>

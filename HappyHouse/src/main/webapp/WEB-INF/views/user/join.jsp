@@ -91,16 +91,16 @@
 			<form id="loginform" method="post" action="">
 				<input type="hidden" name="act" value="login">
 				<div class="user-box">
-					<input type="text" id="userid" name="id" required=""> <label>ID</label>
+					<input type="text" id="userid" name="id" required=""> <label>ID *</label>
 				</div>
 				<div class="user-box">
-					<input type="password" id="userpwd" name="password" required=""> <label>Password</label>
+					<input type="password" id="userpwd" name="password" required=""> <label>Password *</label>
 				</div>
 				<div class="user-box">
-					<input type="password" id="userpwdver" name="password" required=""> <label>Password Verification</label>
+					<input type="password" id="userpwdver" name="password" required=""> <label>Password Verification *</label>
 				</div>
 				<div class="user-box">
-					<input type="text" id="username" name="name" required=""> <label>Name</label>
+					<input type="text" id="username" name="name" required=""> <label>Name *</label>
 				</div>
 				<div class="user-box">
 					<input type="text" id="usertel" name="tel" required=""> <label>Tel</label>

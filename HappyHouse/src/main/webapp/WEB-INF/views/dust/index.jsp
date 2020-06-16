@@ -14,10 +14,10 @@
 	<br>
 	<div style='float: left;'>
 		<h5>
-			<input type="checkbox" name="fav_location" onclick='boxChecked(this);'> 관심지역 미세먼지 확인하기
+			<input type="checkbox" name="fav_location" onclick='boxChecked(this);'> 실시간 미세먼지 수치
 		</h5>
 	</div>
-	<div style='float: right;'>
+	<div style='float: right; margin-right: 5%;'>
 		<h5>
 			<input id="search_name" placeholder="지역구"></input>
 		</h5>

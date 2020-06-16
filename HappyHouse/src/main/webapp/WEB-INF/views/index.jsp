@@ -44,7 +44,7 @@ function showMain(){
 				</div>
 				<!-- Slide Two - Set the background image for this slide in the line below -->
 				<div class="carousel-item"
-					style="background-image: url('https://lh4.googleusercontent.com/proxy/gSITt5dYe68aKdex4tVMq1uAG6Z2N9EMfg9KGhiTtrn4HEI-H-oJGnA40gT2ScIdw_3tafBJiKWqfnUgIvGVCE-9K-FB9GvDYuPxvkrxtPKpPFB_5n40DFThMhrAqA3xhOtxDtOmN0k5Inz0SsxI84iovL2C8KWyREwA=s0-d')">
+					style="background-image: url('https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2140E45056D2A64904')">
 					<div class="carousel-caption d-none d-md-block">
 						<h3>What house do you want?</h3>
 						<p>당신은 어떤 하우스 정보를 얻고 싶으신가요?</p>
@@ -122,10 +122,10 @@ function showMain(){
 		<!-- Call to Action Section -->
 		<div class="row mb-4">
 			<div class="col-md-8">
-				<h4>그럼 지금 바로 검색을 이용해보세요!</h4>
+				<h4>지금 바로 아파트 정보를 검색해보세요!</h4>
 			</div>
 			<div class="col-md-4">
-				<a class="btn btn-lg btn-secondary btn-block" onClick="showMain()">Call to Action</a>
+				<a class="btn btn-lg btn-secondary btn-block" onClick="showMain()">아파트 검색</a>
 			</div>
 		</div>
 		
