@@ -23,8 +23,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		list.add("/userinfo/**");
 		list.add("/delete/**");
 
-		// QnA 관련
-		// list.add("/api/qna");
+		// House 관련
+		list.add("/house/**");
 		
 		registry.addInterceptor(new PermissionIntercepter()).addPathPatterns(list);
 	}

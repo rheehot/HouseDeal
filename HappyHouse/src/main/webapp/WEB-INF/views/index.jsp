@@ -17,7 +17,10 @@ $(document).ready(function(){
 	
 });
 function showMain(){
-	$('#search_house_in_googlemap').show(1000);
+	if(${userinfo != null})
+		$('#search_house_in_googlemap').show(1000);
+	else
+		alert('비회원일 경우 사용할 수 없는 서비스 입니다.');
 }
 </script>
 </head>

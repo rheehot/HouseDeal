@@ -54,7 +54,7 @@
 
 			<br>
 			<div id="listall">
-				<table>
+				<table style="width: 100%;">
 					<thead>
 						<tr>
 							<th>구</th>

@@ -30,12 +30,12 @@ function shoplist() {
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link" href="javascript:boardlist();">공지사항</a></li>
-				<li class="nav-item"><a class="nav-link" href="${root}/move/house">아파트 정보</a></li>
 				<c:if test="${ userinfo == null }">
 					<li class="nav-item"><a class="nav-link" href="${root}/user/loginpage">로그인</a></li>
 					<li class="nav-item"><a class="nav-link" href="${root}/user/joinpage">회원가입</a></li>
 				</c:if>
 				<c:if test="${ userinfo != null }">
+					<li class="nav-item"><a class="nav-link" href="${root}/move/house">아파트 정보</a></li>
 					<li class="nav-item"><a class="nav-link" href="javascript:shoplist();">상권 정보</a></li>
 					<li class="nav-item"><a class="nav-link" href="${root}/api/qna">QnA</a></li>
 					<li class="nav-item dropdown">
