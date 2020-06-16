@@ -7,6 +7,11 @@
 <head>
 <%@ include file="setting.jsp"%>
 <title>Happy House</title>
+<style type="text/css">
+footer {
+	position: relative;
+}
+</style>
 <script type="text/javascript">
 $(document).ready(function(){
 	

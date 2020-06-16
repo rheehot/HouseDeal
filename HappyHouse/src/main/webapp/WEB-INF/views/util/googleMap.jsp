@@ -4,7 +4,7 @@
 <c:set var="root" value="${ pageContext.request.contextPath }" />
 <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZfdQwv6kw3YqjpTPj7AdoOSaBWK-vgsk&callback=initMap"></script>
-<link rel='stylesheet' type='text/css' href='${root}/css/userlist.css' />
+<link rel='stylesheet' type='text/css' href='${root}/css/googlemap.css' />
 <div style="margin-top: 50px;">
 	<div class="starter-template">
 		<div class="form-group md" style="float: right;">
