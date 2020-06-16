@@ -19,69 +19,96 @@ import com.happyhouse.service.UserService;
 import com.happyhouse.util.PageNavigation;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
 	@Autowired
 	UserService service;
 
-	@RequestMapping("loginpage")
+	@RequestMapping("/loginpage")
 	public String loginPage() {
 		return "user/login";
 	}
 
-	@RequestMapping("login")
-	public String login(User input, HttpSession session, Model model) {
-		System.out.println("로그인 정보 >> " + input);
-		User user = service.login(input);
-		if (user != null) {
-			session.setAttribute("userinfo", user);
-			return input.getAddress();
-		} else {
+	@RequestMapping("/login")
+	public String logIn(User input, HttpSession session, Model model) {
+		String result = "";
+		try {
+			User user = service.login(input);
+			if (user != null) {
+				session.setAttribute("userinfo", user);
+				result = "index";
+			} else {
+				model.addAttribute("msg", "아이디 또는 비밀번호를 확인 해 주세요.");
+				result = "error/error";
+			}	
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
 			model.addAttribute("msg", "아이디 또는 비밀번호를 확인 해 주세요.");
-			return "error/error";
+			result = "error/error";
 		}
+		return result;
 	}
 
-	@RequestMapping("logout")
-	public String login(HttpSession session) {
+	@RequestMapping("/logout")
+	public String logOut(HttpSession session) {
 		System.out.println("로그아웃 시도");
 		session.invalidate();
 		return "index";
 	}
 
-	@RequestMapping("joinpage")
+	@RequestMapping("/joinpage")
 	public String joinPage() {
 		return "user/join";
 	}
 	
-	@PostMapping("join")
+	@PostMapping("/join")
 	public @ResponseBody String join(User user) {
 		System.out.println("가입 정보 >> " + user);
-		int result = service.signUp(user);
-		if (result == 1) return "success";
-		else return "fail";
+		String result = "";
+		try {
+			if (service.signUp(user) == 1)
+				result = "success";
+			else
+				result = "fail";
+		}catch(Exception e) {
+			result = "server_error";
+		}
+		return result;
 	}
 	
-	@RequestMapping("updatepage")
+	@RequestMapping("/updatepage")
 	public String updatePage(HttpSession session, Model model) {
-		User input = (User) session.getAttribute("userinfo");
-		System.out.println("세션 정보 >> " + input);
-		User user = service.detail(input.getId());
-		System.out.println("유저 정보 >> " + user);
-		
-		model.addAttribute("user", user);
-		return "user/update";
+		String result = "";
+		try {
+			User input = (User) session.getAttribute("userinfo");
+			System.out.println("세션 정보 >> " + input);
+			User user = service.detail(input.getId());
+			System.out.println("유저 정보 >> " + user);
+			model.addAttribute("user", user);
+			result = "user/update";
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			model.addAttribute("msg", "회원 업데이트 도중 에러가 발생했습니다.");
+			result = "error/error";
+		}
+		return result;
 	}
 	
-	@PostMapping("update")
+	@PostMapping("/update")
 	public @ResponseBody String update(User user) {
-		System.out.println(user);
-		int result = service.Modify(user);
-		if(result == 1) return "success";
-		else return "fail";
+		String result = "";
+		try {
+			if (service.Modify(user) == 1)
+				result = "success";
+			else
+				result = "fail";
+		}catch(Exception e) {
+			result = "server_error";
+		}
+		return result;
 	}
 	
-	@RequestMapping("userlist/{currentPage}")
+	@RequestMapping("/userlist/{currentPage}")
 	public String userList(@PathVariable int currentPage, String key, String word, Model model) {
 		System.out.println("회원 정보 리스트");
 		int sizePerPage = 10;
@@ -96,21 +123,25 @@ public class UserController {
 		return "user/list";
 	}
 	
-	@GetMapping("userinfo/{id}")
+	@GetMapping("/userinfo/{id}")
 	public String userInfo(@PathVariable String id, Model model) {
-		System.out.println(id);
-		User user = service.detail(id);
-		System.out.println(user);
-		if (user != null) {
-			model.addAttribute("user", user);
-			return "user/detail";
-		} else {
-			model.addAttribute("msg", "회원 정보를 불러오는데 실패하였습니다.");
+		try {
+			System.out.println(id);
+			User user = service.detail(id);
+			System.out.println(user);
+			if (user != null) {
+				model.addAttribute("user", user);
+				return "user/detail";
+			} else {
+				model.addAttribute("msg", "회원 정보를 불러오는데 실패하였습니다.");
+				return "error/error";
+			}			
+		}catch(Exception e) {
 			return "error/error";
 		}
 	}
 	
-	@GetMapping("delete/{list}") // /{list}
+	@GetMapping("/delete/{list}") // /{list}
 	public @ResponseBody String delete(@PathVariable int[] list, HttpServletRequest request) { // @PathVariable int[] list
 		//int[] list = request.getParameter("list");
 		System.out.println("삭제 시도");

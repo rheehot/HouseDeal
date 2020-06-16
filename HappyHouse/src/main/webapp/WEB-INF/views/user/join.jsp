@@ -61,12 +61,18 @@
 				address : $('#useraddr').val(),
 			},
 			success : function(data) {
-				$('#modaltext2').text('회원가입이 완료되었습니다.');
-				$('#modaltitle2').text('Success To SignUp');
-				$('#myModal2').modal('show');
-				$('#modalok2').click(function() {
-					location.href = '${root}';
-				})
+				if(data == 'success'){
+					$('#modaltext2').text('회원가입이 완료되었습니다.');
+					$('#modaltitle2').text('Success To SignUp');
+					$('#myModal2').modal('show');
+					$('#modalok2').click(function() {
+						location.href = '${root}';
+					});
+				}else if(data == 'fail'){
+					alert("이미 가입되어있는 아이디 입니다.");
+				}else{
+					alert('회원 가입 도중 에러가 발생했습니다.');
+				}
 			}
 		})
 	}

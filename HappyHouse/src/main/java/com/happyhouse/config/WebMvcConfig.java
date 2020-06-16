@@ -14,7 +14,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		List<String> list = new ArrayList<>();
 		list.add("/api/**");
-
+		list.add("/user/updatepage");
+		list.add("/user/update");
+		list.add("/userlist/**");
+		list.add("/userinfo/**");
+		list.add("/delete/**");
+		
 		registry.addInterceptor(new PermissionIntercepter()).addPathPatterns(list);
 	}
 }

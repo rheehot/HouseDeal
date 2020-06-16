@@ -12,6 +12,7 @@ public class PermissionIntercepter extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		System.out.println("회원 전용 API 인터셉터 확인");
 		HttpSession session = request.getSession();
 		Object obj = session.getAttribute("userinfo");
 		if(obj == null) {

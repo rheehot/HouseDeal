@@ -16,27 +16,35 @@ public class UserServiceImpl implements UserService {
 	UserRepository repo;
 
 	@Override
-	public User login(User user) {
+	public User login(User user) throws Exception {
+		if (user == null && user.getId() == "" && user.getId() == null)
+			throw new Exception();
 		return repo.select(user);
 	}
 
 	@Override
-	public int signUp(User user) {
+	public int signUp(User user) throws Exception {
+		if (user == null)
+			throw new Exception();
 		return repo.insert(user);
 	}
-	
+
 	@Override
-	public User detail(String id) {
+	public User detail(String id) throws Exception {
+		if (id == null)
+			throw new Exception();
 		return repo.selectUser(id);
 	}
 
 	@Override
-	public int Modify(User user) {
+	public int Modify(User user) throws Exception {
+		if (user == null)
+			throw new Exception();
 		return repo.update(user);
 	}
 
 	@Override
-	public List<User> list(int currentPage, int sizePerPage, String key, String word) {
+	public List<User> list(int currentPage, int sizePerPage, String key, String word){
 		return repo.userList(currentPage * 10, sizePerPage, key, word);
 	}
 
@@ -46,10 +54,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Integer remove(int[] list) {
+	public Integer remove(int[] list){
 		return repo.delete(list);
 	}
-	
+
 	@Override
 	public PageNavigation makePageNavigation(int currentPage, int sizePerPage, String key, String word) {
 		PageNavigation pageNavigation = new PageNavigation();

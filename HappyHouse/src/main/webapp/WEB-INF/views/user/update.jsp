@@ -68,12 +68,18 @@ $(document).ready(function(){
 				address : $('#useraddr').val()
 			},
 			success: function(data) {
-				$('#modaltext').text('수정이 완료되었습니다.');
-				$('#modaltitle').text('Success To SignUp');
-				$('#myModal').modal('show');
-				$('#modalok').click(function() {
-					location.href = '${root}';
-				});
+				if(data == 'success'){
+					$('#modaltext').text('수정이 완료되었습니다.');
+					$('#modaltitle').text('Success To SignUp');
+					$('#myModal').modal('show');
+					$('#modalok').click(function() {
+						location.href = '${root}';
+					});
+				}else if(data == "fail"){
+					alert('수정 하지 못했습니다.');
+				}else{
+					alert('서버 에러입니다.');
+				}
 			}
 		});
 	}
