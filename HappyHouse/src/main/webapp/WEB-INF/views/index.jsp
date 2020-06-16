@@ -106,7 +106,7 @@ function showMain(){
 	
 	        <!-- Search Widget -->
 	        <div class="card mb-4">
-	          <h5 class="card-header">인기 검색 목록 Top10!</h5>
+	          <h5 class="card-header" id="btn_chart">인기 검색 목록 Top10! ✅</h5>
 	          <div class="card-body">
 	          	<div class="input-group">
 	    			<%@ include file="util/searchList.jsp"%>
