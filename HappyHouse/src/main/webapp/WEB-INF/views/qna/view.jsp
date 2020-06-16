@@ -161,8 +161,8 @@ function insertReply(userNo){
 <body>
 	<%@ include file="/WEB-INF/views/header.jsp"%>
 	  <!-- Page Content -->
-  <div class="container">
-	<div  style="margin-top: 100px;">
+  <div class="container" style="margin-left: 30%;">
+	<div  style="margin-top: 20px;">
     <div class="row">
 
       <!-- Post Content Column -->
@@ -180,7 +180,7 @@ function insertReply(userNo){
         <img class="img-fluid rounded" src="${ root }/images/${qna.qnaImage}" alt="">
 		<br>
 		<br>
-       	<p id='qna_title' style="font-size: 50px;">${qna.qnaTitle}</p> 
+       	<p id='qna_title' style="font-size: 30px;"># ${qna.qnaTitle}</p> 
         <hr>
 
         <!-- Post Content -->
@@ -195,7 +195,7 @@ function insertReply(userNo){
 				<p>Written by ${ qna.name }</p>
 			</div>
 		</div>
-		<br><br><br><br><br>
+		<br>
         <!-- Comments Form -->
         <div class="card my-4" style="width: 100%">
           <h5 class="card-header">Leave a Comment:</h5>
@@ -207,15 +207,14 @@ function insertReply(userNo){
           </div>
         </div>
 
-		<br>
 		
         <!-- Single Comment -->
         <div id="div_reply"></div>
       </div>
 
       <!-- Sidebar Widgets Column -->
-      <div class="col-md-4">
-        <!-- Search Widget -->
+      <!-- <div class="col-md-4">
+        Search Widget
         <div class="card mb-4">
           <h5 class="card-header">Search</h5>
           <div class="card-body">
@@ -226,7 +225,7 @@ function insertReply(userNo){
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
 	</div>

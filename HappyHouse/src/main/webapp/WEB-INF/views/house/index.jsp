@@ -87,7 +87,7 @@
 				</div>
 				<div style="margin-left: 32%">
 					<select class="form-control" name="dealoption" id="dealoption" tabindex="5" style="width: 90px; float: left;">
-						<option value="all">--all--</option>
+						<option value="all">모두</option>
 						<option value="dong">동</option>
 						<option value="apt">아파트</option>
 					</select>
