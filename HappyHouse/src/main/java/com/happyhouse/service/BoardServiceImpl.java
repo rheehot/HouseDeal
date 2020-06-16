@@ -34,8 +34,10 @@ public class BoardServiceImpl implements BoardService {
 		pageNavigation.setCurrentPage(currentPage);
 		pageNavigation.setNaviSize(naviSize);
 		int totalCount = repo.getTotalCount(key, word); // 총 게시글 수
+		System.out.println("게시글 총 개수 : " + totalCount);
 		pageNavigation.setTotalCount(totalCount);
 		int totalPageCount = (totalCount - 1) / naviSize + 1; // 총 페이지 수 naviSize(sizePerPage)
+		System.out.println("총 페이지 개수 : " + totalPageCount);
 		pageNavigation.setTotalPageCount(totalPageCount); // 300 / 10 ==> 30
 		boolean startRange = currentPage <= naviSize; // true : 이전 x false : 이전 o
 		pageNavigation.setStartRange(startRange);

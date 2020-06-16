@@ -83,7 +83,7 @@
 	
 	</div>
 
-	<div class="container" style="position: absolute; top: 80%; left: 10%">
+	<div class="container" style="position: relative;">
 		<div class="starter-template">
 			<div align="center">
 				<div style="width: 70%">

@@ -34,10 +34,8 @@ public class BoardController {
 		int sizePerPage = spp == null ? 10 : Integer.parseInt(spp);// sizePerPage
 		String key = request.getParameter("key");
 		String word = request.getParameter("word");
-		System.out.println(currentPage + " " + sizePerPage + " " + key + " " + word);
 		List<Board> list = service.selectAll(currentPage - 1, sizePerPage, key, word);
 		PageNavigation pageNavigation = service.makePageNavigation(currentPage, sizePerPage, key, word);
-		System.out.println(list.size());
 		mav.setViewName("board/boardList");
 		mav.addObject("boards", list);
 		mav.addObject("navigation", pageNavigation);
