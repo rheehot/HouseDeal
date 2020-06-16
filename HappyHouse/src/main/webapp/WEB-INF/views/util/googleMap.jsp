@@ -99,7 +99,7 @@
 					$.ajax({
 						url : "${root}/selectbox/dong/" + $("#gugun").val().substring(0, 5),
 						success : function(data, status) {
-							$('#dong').empty();
+							//$('#dong').empty();
 							$.each(data, function(idx, vo){
 								let tempStr = "<option value="+ vo.dong +">" + vo.dong + "</option>";
 								$('#dong').append(tempStr);
