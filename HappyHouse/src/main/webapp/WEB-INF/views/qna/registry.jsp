@@ -32,20 +32,24 @@ function submit(){
            	}, 1700);
             setTimeout(function() {
                 $('#progress').text('');
-            	$('#progress').append("<progress value='75' max='100'></progress> 업로드중 ...");		
+            	$('#progress').append("<progress value='65' max='100'></progress> 업로드중 ...");		
            	}, 2500);
             setTimeout(function() {
                 $('#progress').text('');
+            	$('#progress').append("<progress value='75' max='100'></progress> 업로드중 ...");		
+           	}, 3500);
+            setTimeout(function() {
+                $('#progress').text('');
             	$('#progress').append("<progress value='95' max='100'></progress> 업로드중 ...");		
-           	}, 3000);
+           	}, 4000);
             setTimeout(function() {
             	location.href = "${root}/api/qna";			
-           	}, 3500);
+           	}, 5000);
         },
         error: function (e) {
             console.log("ERROR : ", e);
         }
-	});	
+	});
 }
 </script>
 </head>
@@ -67,13 +71,13 @@ function submit(){
 				<input type="hidden" name="qnaUserNo" value="${userinfo.userNo}"></input>
 				<!-- Blog Post -->
 				<div class="card mb-4">
-					<img class="card-img-top" src="${ root }/images/no_image.png"
+					<img id="img" class="card-img-top" src="${ root }/images/no_image.png"
 						alt="Card image cap">
 					<div class="card-body">
 						<h3>제목</h3>
-						<h3>
+						<p>
 							<input type="text" id="qnaTitle" name="qnaTitle" style="width: 100%;"></input>
-						</h3>
+						</p>
 						<p class="card-text">내용</p>
 						<textarea type="text" id="qnaContent" name="qnaContent"
 							style="width: 100%;"></textarea>
@@ -104,7 +108,27 @@ function submit(){
 
     </div>
     <!-- /.row -->
+	<script type="text/javascript">
+	var sel_file;
+	$(document).ready(function(){
+		console.log('d');
+		$('#filename').on("change", handleImageFileSelect);
+	});
 
+	function handleImageFileSelect(e){
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+
+		filesArr.forEach(function(f){
+			sel_file=f;
+			var reader = new FileReader();
+			reader.onload =function(e){
+				$('#img').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(f);
+		});
+	}
+	</script>
   </div>
   <!-- /.container -->
 	
