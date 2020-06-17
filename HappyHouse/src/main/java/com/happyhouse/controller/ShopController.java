@@ -32,15 +32,15 @@ public class ShopController {
 		System.out.println("상점");
 		String code = "";
 		
-		//System.out.println(filter);
+		System.out.println(filter);
 		
 		// 상권 정보에 처음 들어갔을 경우에만 관심지역 리스트 출력
-		if(filter == null) {
+		if(filter.equals("on")) {
 			int userNo = ((User) session.getAttribute("userinfo")).getUserNo();
 			FavoriteLocation result = favService.getFavoriteLocation(userNo);
 
 			if (result != null) code = result.getCode().substring(0, 5);
-		} else System.out.println(filter);
+		}
 		
 		int currentPage = pg;
 		int sizePerPage = 10; // 페이지당 글 개수

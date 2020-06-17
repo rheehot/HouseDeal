@@ -8,6 +8,8 @@ function boardlist() {
 	document.getElementById("pageform").submit();
 }
 function shoplist() {
+	$('#key').val('');
+	$('#word').val('');
 	document.getElementById("pageform").action = "${root}/shop/list";
 	document.getElementById("pageform").submit();
 }
@@ -16,7 +18,7 @@ function shoplist() {
 	<input type="hidden" name="pg" id="pg" value="1">
 	<input type="hidden" name="key" id="key" value="${key}">
 	<input type="hidden" name="word" id="word" value="${word}">
-	<!-- <input type="hidden" name="filter" id="filter" value="on"> -->
+	<input type="hidden" name="filter" id="filter" value="on">
 </form>
 <!-- Navigation -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">

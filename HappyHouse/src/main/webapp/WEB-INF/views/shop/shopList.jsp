@@ -18,6 +18,7 @@
 		$('#pg').val(1);
 		$('#key').val($('#keys').val());
 		$('#word').val($('#words').val());
+		$('#filter').val('off');
 		document.getElementById("pageform").action = "${root}/shop/list";
 		document.getElementById("pageform").submit();
 	}
@@ -30,7 +31,7 @@
 			<input type="hidden" name="pg" id="pg" value="">
 			<input type="hidden" name="key" id="key" value="">
 			<input type="hidden" name="word" id="word" value="">
-			<input type="hidden" name="filter" id="filter" value="off">
+			<input type="hidden" name="filter" id="filter" value="">
 		</form>
 
 		<div class="username_div">
