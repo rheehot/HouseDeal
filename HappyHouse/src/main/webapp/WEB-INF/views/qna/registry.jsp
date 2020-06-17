@@ -7,7 +7,7 @@
 <head>
 <%@ include file="../setting.jsp"%>
 <link rel='stylesheet' type='text/css' href='${root}/css/houselist.css' /> <!-- css/login.css -->
-<title>Log In</title>
+<title>QnA Registry</title>
 <script type="text/javascript">
 function submit(){
 	$.ajax({

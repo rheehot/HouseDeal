@@ -7,7 +7,7 @@
 <head>
 <%@ include file="../setting.jsp"%>
 <link rel='stylesheet' type='text/css' href='${root}/css/houselist.css' />
-<title>Log In</title>
+<title>QnA View</title>
 <script type="text/javascript">
 	
 </script>
@@ -225,9 +225,9 @@ function insertReply(userNo){
               </span>
             </div>
           </div>
-        </div> -->
+        </div> 
 
-      </div>
+      </div>-->
 	</div>
     </div>
     <!-- /.row -->

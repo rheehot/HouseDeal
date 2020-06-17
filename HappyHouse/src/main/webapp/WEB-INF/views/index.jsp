@@ -20,7 +20,7 @@ function showMain(){
 	if(${userinfo != null})
 		$('#search_house_in_googlemap').show(1000);
 	else
-		alert('비회원일 경우 사용할 수 없는 서비스 입니다.');
+		alert('로그인 후 서비스를 이용해 주세요.');
 }
 </script>
 </head>

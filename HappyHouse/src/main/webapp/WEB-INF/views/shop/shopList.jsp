@@ -30,6 +30,7 @@
 			<input type="hidden" name="pg" id="pg" value="">
 			<input type="hidden" name="key" id="key" value="">
 			<input type="hidden" name="word" id="word" value="">
+			<input type="hidden" name="filter" id="filter" value="off">
 		</form>
 
 		<div class="username_div">

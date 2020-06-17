@@ -8,8 +8,15 @@
 <%@ include file="../setting.jsp"%>
 <link rel='stylesheet' type='text/css' href='${root}/css/houselist.css' />
 <!-- css/login.css -->
-<title>Log In</title>
+<title>QnA</title>
 <script type="text/javascript">
+window.onload = function() {
+    if(!window.location.hash) {
+    	location.href = "${root}/api/qna";
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }
+}
 function login() {
 	if (document.getElementById("userid").value == "") {
 		$('#modaltext').text('아이디를 입력해 주세요.');
@@ -111,6 +118,9 @@ function moveJoin() {
 			</c:if>
 		</div>
 	</div>
+	<!-- <script>
+		location.reload();
+	</script> -->
 
 	<%@ include file="../footer.jsp"%>
 </body>

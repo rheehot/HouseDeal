@@ -28,22 +28,24 @@ public class ShopController {
 	private FavoriteService favService;
 
 	@GetMapping("list")
-	public String boardList(int pg, String key, String word, Model model, HttpSession session) {
+	public String boardList(int pg, String filter, String key, String word, Model model, HttpSession session) {
 		System.out.println("상점");
 		String code = "";
 		
-		if (!key.equals("gu")) {
+		//System.out.println(filter);
+		
+		// 상권 정보에 처음 들어갔을 경우에만 관심지역 리스트 출력
+		if(filter == null) {
 			int userNo = ((User) session.getAttribute("userinfo")).getUserNo();
 			FavoriteLocation result = favService.getFavoriteLocation(userNo);
 
 			if (result != null) code = result.getCode().substring(0, 5);
-		}
+		} else System.out.println(filter);
 		
 		int currentPage = pg;
 		int sizePerPage = 10; // 페이지당 글 개수
 		List<Shop> list = service.selectAll(currentPage - 1, sizePerPage, key, word, code);
 		PageNavigation pageNavigation = service.makePageNavigation(currentPage, sizePerPage, key, word, code);
-		System.out.println(list.size());
 		model.addAttribute("shops", list);
 		model.addAttribute("navigation", pageNavigation);
 		model.addAttribute("pg", currentPage);
