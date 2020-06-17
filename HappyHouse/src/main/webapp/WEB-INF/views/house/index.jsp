@@ -16,7 +16,7 @@
 		validationCheck(1);
 	});
 	function pageMove(pg) {
-		validationCheck(pg+1);
+		validationCheck(pg);
 	}
 	function validationCheck(pg) {
 		var values = document.getElementsByName("deal");
