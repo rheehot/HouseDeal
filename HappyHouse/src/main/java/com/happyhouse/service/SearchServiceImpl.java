@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.happyhouse.domain.Search;
+import com.happyhouse.domain.SearchHit;
 import com.happyhouse.repository.SearchRepository;
 
 @Service
@@ -32,6 +33,16 @@ public class SearchServiceImpl implements SearchService{
 	@Override
 	public List<Search> findAllSearchs() throws Exception {
 		return repository.selectAllSearch();
+	}
+
+	@Override
+	public int getUserHitCount(SearchHit searchHit) throws Exception {
+		return repository.selectUserHitCount(searchHit);
+	}
+
+	@Override
+	public int registryUserHit(SearchHit searchHit) throws Exception {
+		return repository.insertUserHit(searchHit);
 	}
 	
 }

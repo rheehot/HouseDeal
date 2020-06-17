@@ -34,4 +34,18 @@
 		ORDER BY hit_cnt DESC
 		LIMIT 10;
 	</select>
+	
+	<select id="selectUserHitCount" resultType="int">
+		SELECT count(*) as cnt
+		FROM check_hit_search
+		WHERE user_no = #{userNo}
+		AND dong = #{dong}
+		AND apt_name = #{aptName}
+		AND input_date = #{inputDate};
+	</select>
+	
+	<insert id="insertUserHit">
+		INSERT INTO check_hit_search(user_no, dong, apt_name, input_date)
+		VALUES(#{userNo}, #{dong}, #{aptName}, #{inputDate});
+	</insert>
 </mapper>

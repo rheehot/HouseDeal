@@ -136,6 +136,7 @@
 					type : 'POST',
 					url : '${root}/search',
 					data : {
+						id : ${userinfo.userNo},
 						dong : $("#dong").val(),
 						aptName : '',
 					},
@@ -205,10 +206,12 @@
 		return result;
 	}
 	function search(){
+		
 		$.ajax({
 			type : 'POST',
 			url : '${root}/search',
 			data : {
+				id : ${userinfo.userNo},
 				dong : $("#dong").val(),
 				aptName : aptName
 			},

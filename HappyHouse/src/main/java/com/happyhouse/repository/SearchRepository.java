@@ -3,6 +3,7 @@ package com.happyhouse.repository;
 import java.util.List;
 
 import com.happyhouse.domain.Search;
+import com.happyhouse.domain.SearchHit;
 
 public interface SearchRepository {
 	int selectCount(Search search) throws Exception;
@@ -13,4 +14,7 @@ public interface SearchRepository {
 
 	List<Search> selectAllSearch() throws Exception;
 
+	int selectUserHitCount(SearchHit searchHit) throws Exception;
+	
+	int insertUserHit(SearchHit searchHit) throws Exception;
 }

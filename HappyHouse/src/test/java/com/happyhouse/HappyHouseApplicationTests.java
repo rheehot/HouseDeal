@@ -6,7 +6,9 @@ import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -109,5 +111,11 @@ class HappyHouseApplicationTests {
 		System.out.println(list.size());
 		
 	}
-
+	
+	@Test
+	public void getDate() {
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String to = transFormat.format(new Date());
+		System.out.println(to);
+	}
 }
