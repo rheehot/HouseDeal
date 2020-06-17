@@ -19,8 +19,8 @@ public class QnAServiceImpl implements QnAService {
 	@Autowired
 	private QnARepository repository;
 
-	private static final String SAVE_PATH = "C:/Users/USER/git/happyhouse-final/HappyHouse/src/main/resources/static/images";
-	private static final String PREFIX_URL = "C:/Users/USER/git/happyhouse-final/HappyHouse/src/main/resources/static/images";
+	private static final String SAVE_PATH = "/Users/seok/Desktop/seok/git/spring/STS-WorkSpace/HouseDeal/HappyHouse/src/main/resources/static/images";
+	private static final String PREFIX_URL = "/Users/seok/Desktop/seok/git/spring/STS-WorkSpace/HouseDeal/HappyHouse/src/main/resources/static/images";
 	
 	@Override
 	public List<QnA> findAll(String key, String word) throws Exception {

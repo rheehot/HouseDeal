@@ -20,7 +20,27 @@ function submit(){
         cache: false,
         timeout: 600000,
         success: function (data) {
-            location.href = "${root}/api/qna";
+            $('#progress').show(100);
+            $('#progress').append("<progress value='10' max='100'></progress> 업로드중 ...");
+            setTimeout(function() {
+                $('#progress').text('');
+            	$('#progress').append("<progress value='30' max='100'></progress> 업로드중 ...");		
+           	}, 1000);
+            setTimeout(function() {
+                $('#progress').text('');
+            	$('#progress').append("<progress value='50' max='100'></progress> 업로드중 ...");		
+           	}, 1700);
+            setTimeout(function() {
+                $('#progress').text('');
+            	$('#progress').append("<progress value='75' max='100'></progress> 업로드중 ...");		
+           	}, 2500);
+            setTimeout(function() {
+                $('#progress').text('');
+            	$('#progress').append("<progress value='95' max='100'></progress> 업로드중 ...");		
+           	}, 3000);
+            setTimeout(function() {
+            	location.href = "${root}/api/qna";			
+           	}, 3500);
         },
         error: function (e) {
             console.log("ERROR : ", e);
@@ -40,9 +60,9 @@ function submit(){
     </h1>
 
     <div class="row">
-
       <!-- Blog Entries Column -->
       <div class="col-md-8">
+      <div id="progress" style="display: none;"></div>
 				<form id="form" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="qnaUserNo" value="${userinfo.userNo}"></input>
 				<!-- Blog Post -->
